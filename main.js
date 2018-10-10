@@ -1,5 +1,5 @@
 // Page Elements
-
+//This added
 const engadget = document.getElementById('engadget');
 const recode = document.getElementById('recode');
 const nextWeb = document.getElementById('nextWeb');
@@ -88,3 +88,4 @@ nextWeb.addEventListener('click', function() {
   getNews(nextWebUrl);
   // Call getNews() here
 }, false);
+///////
