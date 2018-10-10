@@ -1,5 +1,5 @@
 // Page Elements
-
+//Test added
 const engadget = document.getElementById('engadget');
 const recode = document.getElementById('recode');
 const nextWeb = document.getElementById('nextWeb');
