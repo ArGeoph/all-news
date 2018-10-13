@@ -45,7 +45,7 @@ function renderNews(articles) {
         ' </div>' +
         ' <div class="share">' +
         '   <img class="storyimage" src="' + article.urlToImage + '" />' +
-        '   <a href="https://twitter.com/<your user name>" target="_blank"><button type="button" class="tweet" id="tweet ' + index + '">' +
+        '   <a href="https://twitter.com/KirillGolubev" target="_blank"><button type="button" class="tweet" id="tweet ' + index + '">' +
         '   <i class="fa fa-twitter" aria-hidden="true"></i>Tweet This</button></a>' +
         ' </div>' +
         '</div>';
@@ -73,19 +73,19 @@ function sendTweets(newsObjects) {
 
 engadget.addEventListener('click', function() {
   main.innerHTML = "";
-  getNews(engadgetUrl);
+  getNews(engadgetUrl).then(articlesArray => renderNews(articlesArray));
   // Call getNews() here
 }, false);
 
 recode.addEventListener('click', function() {
   main.innerHTML = "";
-  getNews(recodeUrl);
+  getNews(recodeUrl).then(articlesArray => renderNews(articlesArray));
   // Call getNews() here
 }, false);
 
 nextWeb.addEventListener('click', function() {
   main.innerHTML = "";
-  getNews(nextWebUrl);
+  getNews(nextWebUrl).then(articlesArray => renderNews(articlesArray));
   // Call getNews() here
 }, false);
 ///////
