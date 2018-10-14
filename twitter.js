@@ -1,9 +1,6 @@
 const Twitter = {};
 
-const oauthConsumerKey = ''; // Generated from apps.twitter.com
-const oauthConsumerSecret = ''; // Generated from Keys and Access Tokens on apps.twitter.com
-const oauthToken = ''; // Generated from Keys and Access Tokens on apps.twitter.com
-const oauthTokenSecret = ''; // Generated from Keys and Access Tokens on apps.twitter.com
+
 const oauthSignatureMethod = 'HMAC-SHA1';
 const oauthVersion = '1.0';
 const baseUrl = 'https://api.twitter.com/1.1/statuses/update.json';
