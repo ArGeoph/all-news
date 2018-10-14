@@ -39,10 +39,10 @@ function renderNews(articles) {
         ' </div>' +
         ' <div class="share">' +
         '   <img class="storyimage" src="' + article.urlToImage + '" />' +
-        '   <div class="share-buttons"><a href="https://twitter.com/KirillGolubev" target="_blank"><button type="button" class="tweet" id="tweet ' + index + '">' +
-        '   <i class="fa fa-twitter" aria-hidden="true"></i>Tweet</button></a>' +
-            '<a href="https://facebook.com" target="_blank"><button type="button" class="facebook" id="facebook ' + index + '">' +
-        '   <i class="fa fa-facebook fa-2"" aria-hidden="true"></i>Post</button></a></div>' +
+        '   <div class="share-buttons"><button type="button" class="tweet" id="tweet ' + index + '">' +
+        '   <i class="fa fa-twitter" aria-hidden="true"></i>Tweet</button>' +
+            '<button type="button" class="facebook" id="facebook ' + index + '">' +
+        '   <i class="fa fa-facebook fa-2"" aria-hidden="true"></i>Post</button></div>' +
         ' </div>' +
         '</div>';
   
@@ -59,7 +59,8 @@ function sendTweets(newsObjects) {
   let tweetButtons = document.getElementsByClassName('tweet');
   for (let i = 0; i < tweetButtons.length; i++) {
     tweetButtons[i].addEventListener('click', function() {
-      // Call Post Status function here
+      console.log(newsObjects[i].url);
+      Twitter.postStatus(newsObjects[i].url);
       tweetButtons[i].innerHTML = "Tweeted";
     }, false);
   }
@@ -69,15 +70,15 @@ function sendTweets(newsObjects) {
 
 engadget.addEventListener('click', function() {
   main.innerHTML = "";
-  getNews(engadgetUrl).then(articlesArray => renderNews(articlesArray));
+  getNews(engadgetUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
 }, false);
 
 recode.addEventListener('click', function() {
   main.innerHTML = "";
-  getNews(recodeUrl).then(articlesArray => renderNews(articlesArray));
+  getNews(recodeUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
 }, false);
 
 nextWeb.addEventListener('click', function() {
   main.innerHTML = "";
-  getNews(nextWebUrl).then(articlesArray => renderNews(articlesArray));
+  getNews(nextWebUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
 }, false);
