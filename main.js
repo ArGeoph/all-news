@@ -1,6 +1,7 @@
 const engadget = document.getElementById('engadget');
 const recode = document.getElementById('recode');
 const nextWeb = document.getElementById('nextWeb');
+const hackerNews = document.getElementById('hackerNews');
 const main = document.getElementsByTagName('main')[0];
 
 // News API Data
@@ -8,6 +9,7 @@ const main = document.getElementsByTagName('main')[0];
 const engadgetUrl = 'https://newsapi.org/v2/top-headlines?sources=engadget&apiKey=';
 const recodeUrl = 'https://newsapi.org/v2/top-headlines?sources=recode&apiKey=';
 const nextWebUrl = 'https://newsapi.org/v2/top-headlines?sources=the-next-web&apiKey=';
+const hackerNewsUrl = 'https://newsapi.org/v2/top-headlines?sources=hacker-news&apiKey=';
 
 // Request News Function
 const getNews = async (url) => {
@@ -28,12 +30,12 @@ const getNews = async (url) => {
 // Render Function
 function renderNews(articles) {
   articles.map((article, index) => {
-    if (index > 0) {
+    if (index > 0 && article.description != null) {
         let articleRow =
         '<div class="articlerow">' +
         ' <div class="article">' +
         '   <h2 class="title">' + article.title + '</h2>' +
-        '   <h3>By ' + article.author + ' on ' + new Date(article.publishedAt).toLocaleString() + '</h3>' +
+        '   <h3>By ' + ((article.author !=null) ? article.author : "John Doe")    + ' on ' + new Date(article.publishedAt).toLocaleString() + '</h3>' +
         '   <p> ' + article.description + '</p>' +
         '   <a href="' + article.url + '" target="_blank" class="readmore"><p>Read More</p></a>' +
         ' </div>' +
@@ -81,4 +83,9 @@ recode.addEventListener('click', function() {
 nextWeb.addEventListener('click', function() {
   main.innerHTML = "";
   getNews(nextWebUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
+}, false);
+
+hackerNews.addEventListener('click', function() {
+  main.innerHTML = "";
+  getNews(hackerNewsUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
 }, false);

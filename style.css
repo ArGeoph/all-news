@@ -8,6 +8,11 @@ header img {
   padding: 10px;
 }
 
+#sources {
+  display: inline-flex;
+  justify-content: space-around;
+}
+
 h1 {
   font-family: Playfair Display;
   font-size: 76px;
@@ -110,7 +115,7 @@ button {
   color: #a5c2e6;
 }
 
-#engadget, #recode, #nextWeb {
+.sourceButton {
   font-family: Source Sans Pro;
   font-size: 18px;
   font-weight: 600;
@@ -125,7 +130,7 @@ button {
   padding: 5px;
 }
 
-#engadget:focus, #recode:focus, #nextWeb:focus {
+#engadget:focus, #recode:focus, #nextWeb:focus, #hackerNews:focus {
   border-bottom: solid 5px white;
   padding-bottom: 3px;
 }
