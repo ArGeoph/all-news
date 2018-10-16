@@ -13,6 +13,17 @@ header img {
   justify-content: space-around;
 }
 
+.sticky {
+  position: fixed;
+  margin: 0;
+  left: 0;
+  top: -15px;
+  z-index: 100;
+  width: 100%;
+  background-color: rgba(196, 68, 127, 0.7);
+
+}
+
 h1 {
   font-family: Playfair Display;
   font-size: 76px;
