@@ -4,18 +4,19 @@ body {
   background-color: #92C3EC;
   }
 
+/*Header*/
 header img {
   padding: 10px;
 }
 
 #sources {
-  display: inline-flex;
-  justify-content: space-around;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .sticky {
+  margin: 0 auto;
   position: fixed;
-  margin: 0;
   left: 0;
   top: -15px;
   z-index: 100;
@@ -34,11 +35,24 @@ h1 {
 }
 
 form {
+  font-family: "Playfair Display";
   margin: auto;
   text-align: center;
   margin-bottom: 5px;
 }
 
+#newSources {
+  margin: 24px 0 0 0;
+  width: 130px;
+  height: 30px;
+  display: none;
+}
+
+#addMoreSources {
+  margin: 24px 0 0 0;
+  width: 50px;
+}
+/*Articles, ie main content */
 h2 {
   font-family: Playfair Display;
   font-size: 38px;

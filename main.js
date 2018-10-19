@@ -36,7 +36,7 @@ function renderNews(articles) {
         ' <div class="article">' +
         '   <h2 class="title">' + article.title + '</h2>' +
         '   <h3>By ' + ((article.author !=null) ? article.author : "John Doe")    + ' on ' + new Date(article.publishedAt).toLocaleString() + '</h3>' +
-        '   <p class="description"> ' + article.description + '</p>' +
+        '   <p class="content"> ' + (article.content !=null ? (article.content.split("[")[0]) : article.description) + '</p>' +
         '   <a href="' + article.url + '" target="_blank" class="readmore"><p>Read More</p></a>' +
         ' </div>' +
         ' <div class="share">' +

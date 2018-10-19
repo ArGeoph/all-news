@@ -12,4 +12,19 @@ $(document).ready( () => {
             $('.nav').removeClass('sticky');
         }
     });
+
+    //Add sources button actions
+    $("#addMoreSources").click((event) => {
+        $("#newSources").fadeToggle(300);
+
+        //Change add Sources button label
+        let buttonLabel = document.getElementById("addMoreSources").innerHTML;
+        
+        if ( buttonLabel === "+") {
+            document.getElementById("addMoreSources").innerHTML = "x";
+        }
+        else {
+            document.getElementById("addMoreSources").innerHTML = "+";
+        }
+    });
 });
