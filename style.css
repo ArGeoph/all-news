@@ -9,22 +9,6 @@ header img {
   padding: 10px;
 }
 
-#sources {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.sticky {
-  margin: 0 auto;
-  position: fixed;
-  left: 0;
-  top: -15px;
-  z-index: 100;
-  width: 100%;
-  background-color: rgba(196, 68, 127, 0.7);
-
-}
-
 h1 {
   font-family: Playfair Display;
   font-size: 76px;
@@ -34,7 +18,10 @@ h1 {
   padding: 20px;
 }
 
-form {
+#sources {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
   font-family: "Playfair Display";
   margin: auto;
   text-align: center;
@@ -52,6 +39,16 @@ form {
   margin: 24px 0 0 0;
   width: 50px;
 }
+
+.sticky {
+  position: fixed;
+  left: 0;
+  top: -15px;
+  z-index: 100;
+  width: 100%;
+  background-color: rgba(196, 68, 127, 0.6);
+}
+
 /*Articles, ie main content */
 h2 {
   font-family: Playfair Display;
