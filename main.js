@@ -11,6 +11,31 @@ const recodeUrl = 'https://newsapi.org/v2/top-headlines?sources=recode&apiKey=';
 const nextWebUrl = 'https://newsapi.org/v2/top-headlines?sources=the-next-web&apiKey=';
 const hackerNewsUrl = 'https://newsapi.org/v2/top-headlines?sources=hacker-news&apiKey=';
 
+//Callback function called when page is loaded for the first time
+
+const initialize = () => {
+  //Add event listeners
+
+  engadget.addEventListener('click', () => addNewsSource(engadgetUrl), false);  
+  recode.addEventListener('click', () => addNewsSource(recodeUrl), false);  
+  nextWeb.addEventListener('click', () => addNewsSource(nextWebUrl), false);  
+  hackerNews.addEventListener('click', () => addNewsSource(hackerNewsUrl), false);
+
+  //Load default news when page is loaded by the first time, and select the corresponding menu button
+
+  addNewsSource(recodeUrl); 
+  $('#recode').addClass('jqfocus');
+};
+
+//News callback function
+const addNewsSource = (sourceUrl) => {
+  //Remove focus from menu button loaded by default
+  $('#recode').removeClass('jqfocus');
+
+  main.innerHTML = "";
+  getNews(sourceUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
+};
+
 // Request News Function
 const getNews = async (url) => {
     try {
@@ -56,7 +81,6 @@ function renderNews(articles) {
 }
 
 // Post Tweet Function
-
 function sendTweets(newsObjects) {
   let tweetButtons = document.getElementsByClassName('tweet');
   for (let i = 0; i < tweetButtons.length; i++) {
@@ -68,24 +92,5 @@ function sendTweets(newsObjects) {
   }
 }
 
-// Button Event Listeners
-
-engadget.addEventListener('click', function() {
-  main.innerHTML = "";
-  getNews(engadgetUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
-}, false);
-
-recode.addEventListener('click', function() {
-  main.innerHTML = "";
-  getNews(recodeUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
-}, false);
-
-nextWeb.addEventListener('click', function() {
-  main.innerHTML = "";
-  getNews(nextWebUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
-}, false);
-
-hackerNews.addEventListener('click', function() {
-  main.innerHTML = "";
-  getNews(hackerNewsUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
-}, false);
+//Eventlistener to add some actions when page is loaded for the first time
+window.addEventListener("load", initialize, false);
