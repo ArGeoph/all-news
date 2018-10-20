@@ -2,7 +2,9 @@ const engadget = document.getElementById('engadget');
 const recode = document.getElementById('recode');
 const nextWeb = document.getElementById('nextWeb');
 const hackerNews = document.getElementById('hackerNews');
+const sourcesList = document.getElementById('newSources');
 const main = document.getElementsByTagName('main')[0];
+const sourcesMap = new Map();
 
 // News API Data
 
@@ -14,12 +16,16 @@ const hackerNewsUrl = 'https://newsapi.org/v2/top-headlines?sources=hacker-news&
 //Callback function called when page is loaded for the first time
 
 const initialize = () => {
+  //Map used to store urls for new sources
+  sourcesMap.set("AlJazeera", "https://newsapi.org/v2/top-headlines?sources=al-jazeera-english&apiKey=");
+  sourcesMap.set("ABC", "https://newsapi.org/v2/top-headlines?sources=abc-news&apiKey=");
+  sourcesMap.set("ABC", "https://newsapi.org/v2/top-headlines?sources=abc-news&apiKey=");
   //Add event listeners
-
   engadget.addEventListener('click', () => addNewsSource(engadgetUrl), false);  
   recode.addEventListener('click', () => addNewsSource(recodeUrl), false);  
   nextWeb.addEventListener('click', () => addNewsSource(nextWebUrl), false);  
   hackerNews.addEventListener('click', () => addNewsSource(hackerNewsUrl), false);
+  sourcesList.addEventListener('change', () => addNewsSource(sourcesMap.get(sourcesList.value)));
 
   //Load default news when page is loaded by the first time, and select the corresponding menu button
 
@@ -27,7 +33,8 @@ const initialize = () => {
   $('#recode').addClass('jqfocus');
 };
 
-//News callback function
+//News callback function used to load and render news from the url 
+
 const addNewsSource = (sourceUrl) => {
   //Remove focus from menu button loaded by default
   $('#recode').removeClass('jqfocus');
