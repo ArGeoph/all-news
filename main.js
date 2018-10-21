@@ -5,6 +5,8 @@ const hackerNews = document.getElementById('hackerNews');
 const sourcesList = document.getElementById('newSources');
 const main = document.getElementsByTagName('main')[0];
 const sourcesMap = new Map();
+const sourcesException = []; //variable used to track all news sources that don't contain proper content but only description
+
 
 // News API Data
 
@@ -22,7 +24,6 @@ const initialize = () => {
   sourcesMap.set("BBC", "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=");
   sourcesMap.set("CBC", "https://newsapi.org/v2/top-headlines?sources=cbc-news&apiKey=");
   sourcesMap.set("CNN", "https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=");
-  sourcesMap.set("Google News", "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=");
   sourcesMap.set("Google News Canada", "https://newsapi.org/v2/top-headlines?sources=google-news-ca&apiKey=");
   sourcesMap.set("Google News Russia", "https://newsapi.org/v2/top-headlines?sources=google-news-ru&apiKey=");
   sourcesMap.set("New Scientist", "https://newsapi.org/v2/top-headlines?sources=new-scientist&apiKey=");
@@ -33,6 +34,10 @@ const initialize = () => {
   sourcesMap.set("The Guardian", "https://newsapi.org/v2/top-headlines?sources=the-guardian-uk&apiKey=");
   sourcesMap.set("The Washington Post", "https://newsapi.org/v2/top-headlines?sources=the-washington-post&apiKey=");
   sourcesMap.set("Russia Today", "https://newsapi.org/v2/top-headlines?sources=rt&apiKey=");
+
+  //Add news sources exception
+  sourcesException.push("rbc", "rt", "google-news-ru");
+  console.log(sourcesException);
 
   //Add event listeners
   engadget.addEventListener('click', () => addNewsSource(engadgetUrl), false);  
@@ -82,7 +87,8 @@ function renderNews(articles) {
         ' <div class="article">' +
         '   <h2 class="title">' + article.title + '</h2>' +
         '   <h3>By ' + ((article.author !=null) ? article.author : "John Doe")    + ' on ' + new Date(article.publishedAt).toLocaleString() + '</h3>' +
-        '   <p class="content"> ' + (article.content !=null ? (article.content.split("[")[0]) : article.description) + '</p>' +
+        '   <p class="content"> ' + ((article.content !=null) && (sourcesException.indexOf(article.source.id) === -1)
+            ? (article.content.split("[")[0]) : article.description) + '</p>' +
         '   <a href="' + article.url + '" target="_blank" class="readmore"><p>Read More</p></a>' +
         ' </div>' +
         ' <div class="share">' +
@@ -95,9 +101,11 @@ function renderNews(articles) {
         '</div>';
   
       main.innerHTML += articleRow;
+      
     }
 
   });
+
   return articles;
 }
 

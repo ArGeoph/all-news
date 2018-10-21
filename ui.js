@@ -20,11 +20,11 @@ $(document).ready( () => {
         //Change add Sources button label
         let buttonLabel = document.getElementById("addMoreSources").innerHTML;
         
-        if ( buttonLabel === "+") {
+        if ( buttonLabel === "Add +") {
             document.getElementById("addMoreSources").innerHTML = "x";
         }
         else {
-            document.getElementById("addMoreSources").innerHTML = "+";
+            document.getElementById("addMoreSources").innerHTML = "Add +";
         }
     });
 });
