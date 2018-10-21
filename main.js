@@ -19,7 +19,21 @@ const initialize = () => {
   //Map used to store urls for new sources
   sourcesMap.set("AlJazeera", "https://newsapi.org/v2/top-headlines?sources=al-jazeera-english&apiKey=");
   sourcesMap.set("ABC", "https://newsapi.org/v2/top-headlines?sources=abc-news&apiKey=");
-  sourcesMap.set("ABC", "https://newsapi.org/v2/top-headlines?sources=abc-news&apiKey=");
+  sourcesMap.set("BBC", "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=");
+  sourcesMap.set("CBC", "https://newsapi.org/v2/top-headlines?sources=cbc-news&apiKey=");
+  sourcesMap.set("CNN", "https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=");
+  sourcesMap.set("Google News", "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=");
+  sourcesMap.set("Google News Canada", "https://newsapi.org/v2/top-headlines?sources=google-news-ca&apiKey=");
+  sourcesMap.set("Google News Russia", "https://newsapi.org/v2/top-headlines?sources=google-news-ru&apiKey=");
+  sourcesMap.set("New Scientist", "https://newsapi.org/v2/top-headlines?sources=new-scientist&apiKey=");
+  sourcesMap.set("National Geographic", "https://newsapi.org/v2/top-headlines?sources=national-geographic&apiKey=");
+  sourcesMap.set("RBC", "https://newsapi.org/v2/top-headlines?sources=rbc&apiKey=");
+  sourcesMap.set("The Telegraph", "https://newsapi.org/v2/top-headlines?sources=the-telegraph&apiKey=");
+  sourcesMap.set("New York Times", "https://newsapi.org/v2/top-headlines?sources=the-new-york-times&apiKey=");
+  sourcesMap.set("The Guardian", "https://newsapi.org/v2/top-headlines?sources=the-guardian-uk&apiKey=");
+  sourcesMap.set("The Washington Post", "https://newsapi.org/v2/top-headlines?sources=the-washington-post&apiKey=");
+  sourcesMap.set("Russia Today", "https://newsapi.org/v2/top-headlines?sources=rt&apiKey=");
+
   //Add event listeners
   engadget.addEventListener('click', () => addNewsSource(engadgetUrl), false);  
   recode.addEventListener('click', () => addNewsSource(recodeUrl), false);  
