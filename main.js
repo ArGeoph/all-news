@@ -30,10 +30,13 @@ const initialize = () => {
   recode.addEventListener('click', () => addNewsSource(recodeUrl), false);  
   nextWeb.addEventListener('click', () => addNewsSource(nextWebUrl), false);  
   hackerNews.addEventListener('click', () => addNewsSource(hackerNewsUrl), false);
-  sourcesList.addEventListener('change', () => addNewsSource(sourcesMap.get(sourcesList.value)));
+
+  let optionObjects = sourcesList.children;
+  for (let option = 0; option < optionObjects.length; option++) {
+    optionObjects[option].addEventListener('click', () => addNewsSource(sourcesMap.get(optionObjects[option].value)));
+  }
 
   //Load default news when page is loaded by the first time, and select the corresponding menu button
-
   addNewsSource(recodeUrl); 
   $('#recode').addClass('jqfocus');
 };
@@ -61,6 +64,7 @@ const initializeNewsSources = () => {
 
   /* sortNewsSources(sourcesMap); */
   //Create and add news sources to html list
+/*   sourcesList.appendChild(document.createElement("option")); //Add empty field that will be on top */
   sourcesMap.forEach((key, value) => {
     let newNewsSource = document.createElement("option");
     newNewsSource.setAttribute("value", value);
