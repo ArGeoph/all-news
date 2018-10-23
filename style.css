@@ -6,10 +6,6 @@ main {
   max-width: 900px;
   margin: 0 auto;
 }
-/*Header*/
-header img {
-  padding: 10px;
-}
 
 h1 {
   font-family: Playfair Display;
@@ -20,14 +16,21 @@ h1 {
   padding: 20px;
 }
 
+/* .container {
+display: center;
+flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+} */
 #sources {
   display: flex;
   justify-content: center;
+  margin: 0 auto;
+  width: 64%;
   flex-wrap: nowrap;
   font-family: "Playfair Display";
-  margin: auto;
-  text-align: center;
-  margin-bottom: 5px;
+  border-bottom: solid 3px #ffffff;
 }
 
 #newSources {
@@ -42,13 +45,41 @@ h1 {
   width: 50px;
 }
 
+.sourceButton {
+  font-family: Source Sans Pro;
+  font-size: 1.25em;
+  font-weight: 600;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #ffffff;
+  background-color: transparent;
+  border: 0px;
+  width: 200px;
+  height: 35px;
+  padding: 5px;
+  margin-bottom: 0;
+}
+
+#addMoreSources {
+  width: 60px;
+  font-family: Source Sans Pro;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #ffffff;
+  background-color: transparent;
+}
 .sticky {
   position: fixed;
-  left: 0;
   top: -15px;
   z-index: 100;
   width: 100%;
   background-color: rgba(196, 68, 127, 0.6);
+  margin: 0;
+  padding: 0;
 }
 
 /*Articles, ie main content */
@@ -89,13 +120,14 @@ i {
 button:focus {
   outline: 0;
 }
+
 .articlerow {
   display: flex;
   flex-wrap: wrap;
   padding: 30px;
   justify-content: space-around;
   min-height: 250px;
-  border-top: solid 1px #ffffff;
+  
   border-bottom: solid 1px #ffffff;
   overflow: visible;
 }
@@ -140,28 +172,21 @@ button {
   color: #a5c2e6;
 }
 
-.sourceButton {
-  font-family: Source Sans Pro;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 0.94;
-  letter-spacing: 0.5px;
-  text-align: center;
-  color: #ffffff;
-  background-color: transparent;
-  border: 0px;
-  width: 200px;
-  height: 35px;
-  padding: 5px;
-}
-
 .jqfocus, #engadget:focus, #recode:focus, #nextWeb:focus, #hackerNews:focus {
-  border-bottom: solid 5px white;
+  border-bottom: none;
+  border-left: solid 3px white;
+  border-right: solid 3px white;
+  border-top: solid 3px white;
   padding-bottom: 3px;
+  background-color: rgba(0, 162, 255, 0.5);
+  height: "+=12px";
 }
 
 /*Footer*/
 footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: solid 2px white;
   position: absolute;
   width: 100%;
@@ -169,6 +194,9 @@ footer {
   background-color: #130284;
   margin: 0;
   padding: 0;
+  font-family: "Playfair Display";
+  color: whitesmoke;
+  font-size: 1.7em;
 }
 @media (max-width: 640px) {
   .articlerow {

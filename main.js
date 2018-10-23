@@ -5,36 +5,22 @@ const hackerNews = document.getElementById('hackerNews');
 const sourcesList = document.getElementById('newSources');
 const main = document.getElementsByTagName('main')[0];
 const sourcesMap = new Map();
-const sourcesException = []; //variable used to track all news sources that don't contain proper content but only description
+const sourcesException = []; //variable used to track all news sources that don't contain proper content, but only description
 
 
 // News API Data
-
-const engadgetUrl = 'https://newsapi.org/v2/top-headlines?sources=engadget&apiKey=';
-const recodeUrl = 'https://newsapi.org/v2/top-headlines?sources=recode&apiKey=';
-const nextWebUrl = 'https://newsapi.org/v2/top-headlines?sources=the-next-web&apiKey=';
-const hackerNewsUrl = 'https://newsapi.org/v2/top-headlines?sources=hacker-news&apiKey=';
+const newsApiURL = 'https://newsapi.org/v2/top-headlines?sources=';
+const engadgetUrl = 'engadget';
+const recodeUrl = 'recode';
+const nextWebUrl = 'the-next-web';
+const hackerNewsUrl = 'hacker-news';
 
 //Callback function called when page is loaded for the first time
 
 const initialize = () => {
-  //Map used to store urls for new sources
-  sourcesMap.set("AlJazeera", "https://newsapi.org/v2/top-headlines?sources=al-jazeera-english&apiKey=");
-  sourcesMap.set("ABC", "https://newsapi.org/v2/top-headlines?sources=abc-news&apiKey=");
-  sourcesMap.set("BBC", "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=");
-  sourcesMap.set("CBC", "https://newsapi.org/v2/top-headlines?sources=cbc-news&apiKey=");
-  sourcesMap.set("CNN", "https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=");
-  sourcesMap.set("Google News Canada", "https://newsapi.org/v2/top-headlines?sources=google-news-ca&apiKey=");
-  sourcesMap.set("Google News Russia", "https://newsapi.org/v2/top-headlines?sources=google-news-ru&apiKey=");
-  sourcesMap.set("New Scientist", "https://newsapi.org/v2/top-headlines?sources=new-scientist&apiKey=");
-  sourcesMap.set("National Geographic", "https://newsapi.org/v2/top-headlines?sources=national-geographic&apiKey=");
-  sourcesMap.set("RBC", "https://newsapi.org/v2/top-headlines?sources=rbc&apiKey=");
-  sourcesMap.set("The Telegraph", "https://newsapi.org/v2/top-headlines?sources=the-telegraph&apiKey=");
-  sourcesMap.set("New York Times", "https://newsapi.org/v2/top-headlines?sources=the-new-york-times&apiKey=");
-  sourcesMap.set("The Guardian", "https://newsapi.org/v2/top-headlines?sources=the-guardian-uk&apiKey=");
-  sourcesMap.set("The Washington Post", "https://newsapi.org/v2/top-headlines?sources=the-washington-post&apiKey=");
-  sourcesMap.set("Russia Today", "https://newsapi.org/v2/top-headlines?sources=rt&apiKey=");
-
+  //Initialize news sources
+  initializeNewsSources();
+  
   //Add news sources exception
   sourcesException.push("rbc", "rt", "google-news-ru");
   console.log(sourcesException);
@@ -52,8 +38,46 @@ const initialize = () => {
   $('#recode').addClass('jqfocus');
 };
 
-//News callback function used to load and render news from the url 
+//Function initializing map containing news sources and their urls, and adding them to html list
+const initializeNewsSources = () => {
+  //Map used to store urls for new sources
+  sourcesMap.set("AlJazeera", "al-jazeera-english");
+  sourcesMap.set("ABC", "abc-news");
+  sourcesMap.set("BBC", "bbc-news");
+  sourcesMap.set("CBC", "cbc-news");
+  sourcesMap.set("CNN", "cnn");
+  sourcesMap.set("Google News Canada", "google-news-ca");
+  sourcesMap.set("Google News Russia", "google-news-ru");
+  sourcesMap.set("New Scientist", "new-scientist");
+  sourcesMap.set("National Geographic", "national-geographic");
+  sourcesMap.set("RBC", "rbc");
+  sourcesMap.set("The Telegraph", "the-telegraph");
+  sourcesMap.set("New York Times", "the-new-york-times");
+  sourcesMap.set("The Guardian", "the-guardian-uk");
+  sourcesMap.set("The Washington Post", "the-washington-post");
+  sourcesMap.set("Russia Today", "rt");
+  sourcesMap.set("Wired", "wired");
+  sourcesMap.set("The Huffington Post", "wired");
 
+  /* sortNewsSources(sourcesMap); */
+  //Create and add news sources to html list
+  sourcesMap.forEach((key, value) => {
+    let newNewsSource = document.createElement("option");
+    newNewsSource.setAttribute("value", value);
+    newNewsSource.innerHTML = value;
+    sourcesList.appendChild(newNewsSource);
+  });
+}
+
+/* //Function sorting map with news sources. !!!! Naive sorting algorithm is used, change it to more effective algorithm!!!
+const sortNewsSources = (newsSources) => {
+  let min = "";
+
+  newsSources.forEach( (key, value) => {
+    if (key < min)
+  });
+} */
+//News callback function used to load and render news from the url 
 const addNewsSource = (sourceUrl) => {
   //Remove focus from menu button loaded by default
   $('#recode').removeClass('jqfocus');
@@ -65,7 +89,7 @@ const addNewsSource = (sourceUrl) => {
 // Request News Function
 const getNews = async (url) => {
     try {
-        const response = await fetch(url + apiKey); //Send asynchronous request to server 
+        const response = await fetch(newsApiURL + url + apiKey); //Send asynchronous request to server 
 
         if (response.ok) {
             const responseJson = await response.json();

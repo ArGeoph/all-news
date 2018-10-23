@@ -1,15 +1,15 @@
 $(document).ready( () => {
-    let navPosition = $('.nav').offset().top;
+    let navPosition = $('.container').offset().top;
     
     $(window).scroll(() => {
         
         let topPosition = $(window).scrollTop();
 
         if (topPosition > navPosition) {
-            $('.nav').addClass('sticky');
+            $('.container').addClass('sticky');
         }
         else {
-            $('.nav').removeClass('sticky');
+            $('.container').removeClass('sticky');
         }
     });
 
@@ -21,7 +21,7 @@ $(document).ready( () => {
         let buttonLabel = document.getElementById("addMoreSources").innerHTML;
         
         if ( buttonLabel === "Add +") {
-            document.getElementById("addMoreSources").innerHTML = "x";
+            document.getElementById("addMoreSources").innerHTML = "X";
         }
         else {
             document.getElementById("addMoreSources").innerHTML = "Add +";
