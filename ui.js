@@ -5,17 +5,20 @@ $(document).ready( () => {
         
         let topPosition = $(window).scrollTop();
 
-        if (topPosition > navPosition) {
+        if (topPosition > navPosition-70) {
             $('.container').addClass('sticky');
+            
         }
         else {
-            $('.container').removeClass('sticky');
+            $('.container').hide();    
+            $('.container').removeClass('sticky');     
+            $('.container').slideDown(180);           
         }
     });
 
     //Add sources button actions
     $("#addMoreSources").click((event) => {
-        $("#newSources").fadeToggle(300);
+        $("#newSources").fadeToggle(350);
 
         //Change add Sources button label
         let buttonLabel = document.getElementById("addMoreSources").innerHTML;
