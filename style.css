@@ -16,13 +16,6 @@ h1 {
   padding: 20px;
 }
 
-/* .container {
-display: center;
-flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-  text-align: center;
-} */
 #sources {
   display: flex;
   justify-content: center;
@@ -35,18 +28,23 @@ flex-direction: column;
 
 #newSources {
   margin: 24px 0 3px 0;
+  border-radius: 5px;
   width: 130px;
   height: 30px;
   display: none;
 }
 
+#newSources:hover {
+  border: solid 3px blue;
+  box-shadow: -2px -2px 7px blue;
+}
 #addMoreSources {
   margin: 24px 0 0 0;
   width: 50px;
 }
 
 .sourceButton {
-  font-family: Source Sans Pro;
+  font-family: "Source Sans Pro";
   font-size: 1.25em;
   font-weight: 600;
   line-height: 0.94;
@@ -56,7 +54,7 @@ flex-direction: column;
   background-color: transparent;
   border: 0px;
   width: 200px;
-  height: 35px;
+  height: 40px;
   padding: 5px;
   margin-bottom: 0;
 }
@@ -71,15 +69,29 @@ flex-direction: column;
   text-align: center;
   color: #ffffff;
   background-color: transparent;
+  margin: 24px 3px 0px 3px;
+  border-radius: 5px;
 }
 .sticky {
   position: fixed;
   top: -15px;
   z-index: 100;
   width: 100%;
-  background-color: rgba(196, 68, 127, 0.6);
+  background-color: rgba(196, 68, 127, 0.8);
   margin: 0;
   padding: 0;
+}
+#addMoreSources:hover, #engadget:hover, #recode:hover, #nextWeb:hover, #hackerNews:hover {
+  border: solid 3px blue;
+  box-shadow: -2px -2px 7px blue;
+  padding-bottom: 3px;
+}
+.jqfocus, #engadget:focus, #recode:focus, #nextWeb:focus, #hackerNews:focus {
+  border-bottom: none;
+  border-left: solid 3px white;
+  border-right: solid 3px white;
+  border-top: solid 3px white;
+  background-color: rgba(0, 162, 255, 0.5);
 }
 
 /*Articles, ie main content */
@@ -126,8 +138,7 @@ button:focus {
   flex-wrap: wrap;
   padding: 30px;
   justify-content: space-around;
-  min-height: 250px;
-  
+  min-height: 250px;  
   border-bottom: solid 1px #ffffff;
   overflow: visible;
 }
@@ -170,16 +181,6 @@ button {
   letter-spacing: 0.5px;
   text-align: center;
   color: #a5c2e6;
-}
-
-.jqfocus, #engadget:focus, #recode:focus, #nextWeb:focus, #hackerNews:focus {
-  border-bottom: none;
-  border-left: solid 3px white;
-  border-right: solid 3px white;
-  border-top: solid 3px white;
-  padding-bottom: 3px;
-  background-color: rgba(0, 162, 255, 0.5);
-  height: "+=12px";
 }
 
 /*Footer*/
