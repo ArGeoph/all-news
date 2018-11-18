@@ -28,12 +28,7 @@ const initialize = () => {
   recode.addEventListener('click', () => addNewsSource(recodeUrl), false);  
   nextWeb.addEventListener('click', () => addNewsSource(nextWebUrl), false);  
   hackerNews.addEventListener('click', () => addNewsSource(hackerNewsUrl), false);
-  sourcesList.addEventListener('click', newsSourceChanged , false);
-
-  // let optionObjects = sourcesList.children;
-  // for (let option = 0; option < optionObjects.length; option++) {
-  //   optionObjects[option].addEventListener('click', () => addNewsSource(sourcesMap.get(optionObjects[option].value)));
-  // }
+  sourcesList.addEventListener('click', (event) => addNewsSource(event.currentTarget.value) , false);
 
   //Load default news when page is loaded by the first time, and select the corresponding menu button
   addNewsSource(recodeUrl); 
@@ -42,6 +37,7 @@ const initialize = () => {
 
 //Function initializing map containing news sources and their urls, and adding them to html list
 const initializeNewsSources = () => {
+
   //Map used to store urls for new sources
   sourcesMap.set("AlJazeera", "al-jazeera-english");
   sourcesMap.set("ABC", "abc-news");
@@ -69,35 +65,20 @@ const initializeNewsSources = () => {
   sourcesMap.set("Reddit /r/all", "reddit-r-all");
   sourcesMap.set("The Economist", "the-economist");
   sourcesMap.set("TechCrunch", "techcrunch");
-
-  /* sortNewsSources(sourcesMap); */
-  //Create and add news sources to html list
-  let selectHTMLObject = document.createElement("select");
+  sourcesMap.set("USA Today", "usa-today");
+  sourcesMap.set("Ars Technica", "ars-technica");
+  sourcesMap.set("Bloomberg", "bloomberg");
+  sourcesMap.set("Business Insider (UK)", "business-insider-uk");
+  sourcesMap.set("TechBusiness Insider", "business-insider");
 
   sourcesMap.forEach((key, value) => {
     let newNewsSource = document.createElement("option");
     newNewsSource.setAttribute("value", key);
     newNewsSource.innerHTML = value;
     sourcesList.appendChild(newNewsSource);
-
-
   });
+};
 
-  //  sourcesList.appendChild(selectHTMLObject);
-}
-
-const newsSourceChanged = (event) => {
-  addNewsSource(event.currentTarget.value);
-  console.log(event.currentTarget.value);
-}
-/* //Function sorting map with news sources. !!!! Naive sorting algorithm is used, change it to more effective algorithm!!!
-const sortNewsSources = (newsSources) => {
-  let min = "";
-
-  newsSources.forEach( (key, value) => {
-    if (key < min)
-  });
-} */
 //News callback function used to load and render news from the url 
 const addNewsSource = (sourceUrl) => {
   //Remove focus from menu button loaded by default
@@ -114,7 +95,7 @@ const getNews = async (url) => {
 
         if (response.ok) {
             const responseJson = await response.json();
-            console.log(responseJson);
+
             return responseJson.articles;
         }
     }
@@ -157,7 +138,6 @@ function sendTweets(newsObjects) {
   let tweetButtons = document.getElementsByClassName('tweet');
   for (let i = 0; i < tweetButtons.length; i++) {
     tweetButtons[i].addEventListener('click', function() {
-      console.log(newsObjects[i].url);
       Twitter.postStatus(newsObjects[i].url);
       tweetButtons[i].innerHTML = "Tweeted";
     }, false);
