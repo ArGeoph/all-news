@@ -21,8 +21,8 @@ const initialize = () => {
   //Initialize news sources
   initializeNewsSources();
   
-  //Add news sources exception
-  sourcesException.push("rbc", "rt", "google-news-ru");
+  //Add news sources exception that need special handling (in this case proper rendering of cyrillic letters)
+  sourcesException.push("rbc", "rt", "google-news-ru", "lenta");
   console.log(sourcesException);
 
   //Add event listeners
@@ -61,6 +61,15 @@ const initializeNewsSources = () => {
   sourcesMap.set("Russia Today", "rt");
   sourcesMap.set("Wired", "wired");
   sourcesMap.set("The Huffington Post", "wired");
+  sourcesMap.set("BBC Sport", "bbc-sport");
+  sourcesMap.set("Buzzfeed", "buzzfeed");
+  sourcesMap.set("Financial Times", "financial-times");
+  sourcesMap.set("Fox News", "fox-news");
+  sourcesMap.set("Independent", "independent");
+  sourcesMap.set("Lenta", "lenta");
+  sourcesMap.set("Reddit /r/all", "reddit-r-all");
+  sourcesMap.set("The Economist", "the-economist");
+  sourcesMap.set("TechCrunch", "techcrunch");
 
   /* sortNewsSources(sourcesMap); */
   //Create and add news sources to html list
@@ -70,6 +79,8 @@ const initializeNewsSources = () => {
     newNewsSource.setAttribute("value", value);
     newNewsSource.innerHTML = value;
     sourcesList.appendChild(newNewsSource);
+
+    newNewsSource.addEventListener('click', () => addNewsSource(sourcesMap.get(value)));
   });
 }
 
@@ -128,10 +139,8 @@ function renderNews(articles) {
         ' </div>' +
         '</div>';
   
-      main.innerHTML += articleRow;
-      
+      main.innerHTML += articleRow;      
     }
-
   });
 
   return articles;
