@@ -7,7 +7,6 @@ const main = document.getElementsByTagName('main')[0];
 const sourcesMap = new Map();
 const sourcesException = []; //variable used to track all news sources that don't contain proper content, but only description
 
-
 // News API Data
 const newsApiURL = 'https://newsapi.org/v2/top-headlines?sources=';
 const engadgetUrl = 'engadget';
@@ -23,18 +22,18 @@ const initialize = () => {
   
   //Add news sources exception that need special handling (in this case proper rendering of cyrillic letters)
   sourcesException.push("rbc", "rt", "google-news-ru", "lenta");
-  console.log(sourcesException);
 
   //Add event listeners
   engadget.addEventListener('click', () => addNewsSource(engadgetUrl), false);  
   recode.addEventListener('click', () => addNewsSource(recodeUrl), false);  
   nextWeb.addEventListener('click', () => addNewsSource(nextWebUrl), false);  
   hackerNews.addEventListener('click', () => addNewsSource(hackerNewsUrl), false);
+  sourcesList.addEventListener('click', newsSourceChanged , false);
 
-  let optionObjects = sourcesList.children;
-  for (let option = 0; option < optionObjects.length; option++) {
-    optionObjects[option].addEventListener('click', () => addNewsSource(sourcesMap.get(optionObjects[option].value)));
-  }
+  // let optionObjects = sourcesList.children;
+  // for (let option = 0; option < optionObjects.length; option++) {
+  //   optionObjects[option].addEventListener('click', () => addNewsSource(sourcesMap.get(optionObjects[option].value)));
+  // }
 
   //Load default news when page is loaded by the first time, and select the corresponding menu button
   addNewsSource(recodeUrl); 
@@ -73,17 +72,24 @@ const initializeNewsSources = () => {
 
   /* sortNewsSources(sourcesMap); */
   //Create and add news sources to html list
-/*   sourcesList.appendChild(document.createElement("option")); //Add empty field that will be on top */
+  let selectHTMLObject = document.createElement("select");
+
   sourcesMap.forEach((key, value) => {
     let newNewsSource = document.createElement("option");
-    newNewsSource.setAttribute("value", value);
+    newNewsSource.setAttribute("value", key);
     newNewsSource.innerHTML = value;
     sourcesList.appendChild(newNewsSource);
 
-    newNewsSource.addEventListener('click', () => addNewsSource(sourcesMap.get(value)));
+
   });
+
+  //  sourcesList.appendChild(selectHTMLObject);
 }
 
+const newsSourceChanged = (event) => {
+  addNewsSource(event.currentTarget.value);
+  console.log(event.currentTarget.value);
+}
 /* //Function sorting map with news sources. !!!! Naive sorting algorithm is used, change it to more effective algorithm!!!
 const sortNewsSources = (newsSources) => {
   let min = "";
