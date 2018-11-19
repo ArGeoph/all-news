@@ -2,6 +2,7 @@ const engadget = document.getElementById('engadget');
 const recode = document.getElementById('recode');
 const nextWeb = document.getElementById('nextWeb');
 const hackerNews = document.getElementById('hackerNews');
+const userSearch = document.getElementById('search');
 const sourcesList = document.getElementById('newSources');
 const main = document.getElementsByTagName('main')[0];
 const sourcesMap = new Map();
@@ -28,6 +29,7 @@ const initialize = () => {
   recode.addEventListener('click', () => addNewsSource(recodeUrl), false);  
   nextWeb.addEventListener('click', () => addNewsSource(nextWebUrl), false);  
   hackerNews.addEventListener('click', () => addNewsSource(hackerNewsUrl), false);
+  userSearch.addEventListener('keydown', (event) => searchArticles(event), false);
   sourcesList.addEventListener('click', (event) => addNewsSource(event.currentTarget.value) , false);
 
   //Load default news when page is loaded by the first time, and select the corresponding menu button
@@ -85,6 +87,36 @@ const addNewsSource = (sourceUrl) => {
 
   main.innerHTML = "";
   getNews(sourceUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
+};
+
+
+const searchArticles = (event) => {
+  if (event.value === "" || event.keyCode != 16) {
+    return;
+  }
+  else {
+    console.log("I'm here");
+    main.innerHTML = "";
+    getSearchResults(event.currentTarget.value).then( (articles) => {
+      renderNews(articles);
+    });
+  }
+};
+
+//Request search results from news API 
+const getSearchResults = async (userInput) => {
+  try {
+    const request = await fetch(`https://newsapi.org/v2/everything?q=${userInput}${apiKey}`);
+    if (request.ok) {
+      const requestJson = await request.json();
+      console.log(requestJson.articles);
+
+      return requestJson.articles;
+    }
+  }
+  catch(networkError) {
+    console.log(networkError);
+  }
 };
 
 // Request News Function
