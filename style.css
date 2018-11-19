@@ -32,7 +32,6 @@ h1 {
   display: none;
   font-family: "Source Sans Pro";
   font-size: 1.25em;
-  font-weight: 600;
   line-height: 0.94;
   letter-spacing: 0.5px;
   color: black;
@@ -75,7 +74,7 @@ h1 {
   width: 200px;
   height: 40px;
   padding: 5px;
-  margin-top: 16px;
+  margin-top: 18px;
   margin-left: 10px;
   border-radius: 5px;
 }

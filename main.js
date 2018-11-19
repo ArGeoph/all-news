@@ -106,7 +106,7 @@ const searchArticles = (event) => {
 //Request search results from news API 
 const getSearchResults = async (userInput) => {
   try {
-    const request = await fetch(`https://newsapi.org/v2/everything?q=${userInput}${apiKey}`);
+    const request = await fetch(`https://newsapi.org/v2/everything?q=${userInput}${apiKey}&pageSize=50`);
     if (request.ok) {
       const requestJson = await request.json();
       console.log(requestJson.articles);
