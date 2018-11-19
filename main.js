@@ -37,7 +37,6 @@ const initialize = () => {
 
 //Function initializing map containing news sources and their urls, and adding them to html list
 const initializeNewsSources = () => {
-
   //Map used to store urls for new sources
   sourcesMap.set("AlJazeera", "al-jazeera-english");
   sourcesMap.set("ABC", "abc-news");
@@ -67,7 +66,7 @@ const initializeNewsSources = () => {
   sourcesMap.set("TechCrunch", "techcrunch");
   sourcesMap.set("USA Today", "usa-today");
   sourcesMap.set("Ars Technica", "ars-technica");
-  sourcesMap.set("Bloomberg", "bloomberg");
+  sourcesMap.set("Entertainment Weekly", "entertainment-weekly");
   sourcesMap.set("Business Insider (UK)", "business-insider-uk");
   sourcesMap.set("TechBusiness Insider", "business-insider");
 
