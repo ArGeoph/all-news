@@ -45,7 +45,9 @@ const initialize = () => {
     $('.sourceButton').removeClass('jqfocus');
     $(event.currentTarget).addClass('jqfocus');
     addNewsSource(hackerNewsUrl);}, false);
-  formObject.addEventListener('submit', () => searchArticles(userSearch.value), false);
+  formObject.addEventListener('submit', (event) => {
+    event.preventDefault();
+    searchArticles(userSearch.value);}, false);
   sourcesList.addEventListener('click', (event) => {
     $('.sourceButton').removeClass('jqfocus');
     addNewsSource(event.currentTarget.value);} , false);
@@ -110,7 +112,6 @@ const addNewsSource = (sourceUrl) => {
 //Method 
 const searchArticles = (userInput) => {
   if (userInput === "") {
-
     return;
   }
   else {
@@ -125,7 +126,7 @@ const searchArticles = (userInput) => {
       }  
       else {
         searchStatus.style.visibility = "visible";
-        // searchStatus.innerHTML = "Your search request hasn't returned any results. Please try again";
+        userSearch.value = "";
       }    
     });
   }
@@ -185,6 +186,8 @@ function renderNews(articles) {
         '   </button>' + 
         '   <button type="button" class="linkedin fa fa-linkedin" id="linkedin ' + index + '">' +
         '   </button>' +
+        '   <button type="button" class="comments fa fa-comments" id="comments ' + index + '">' +
+        '   </button>' +
         ' </div>' +
         '</div>';
   
@@ -197,11 +200,11 @@ function renderNews(articles) {
 
 // Post Tweet Function
 function sendTweets(newsObjects) {
-  let tweetButtons = document.getElementsByClassName('tweet');
+  let tweetButtons = document.getElementsByClassName('twitter');
   for (let i = 0; i < tweetButtons.length; i++) {
     tweetButtons[i].addEventListener('click', function() {
       Twitter.postStatus(newsObjects[i].url);
-      tweetButtons[i].innerHTML = "Tweeted";
+      tweetButtons[i].classList.add("rotate");
     }, false);
   }
 }
