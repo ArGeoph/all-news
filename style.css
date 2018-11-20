@@ -83,7 +83,7 @@ h1 {
   font-family: "Source Sans Pro";
   font-size: 1em;
   border: 0px;
-  width: 60px;
+  width: 70px;
   height: 40px;
   margin-top: 18px;
   margin-left: 10px;
@@ -244,6 +244,33 @@ button {
   color: #a5c2e6;
 }
 
+.fa {
+  text-align: center;
+  width: 55px;
+  height: 50px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+.facebook {
+  background-color: #627AAC;
+  color: white;
+}
+
+.twitter {
+  background-color: #76BCF1;
+  color: white;
+}
+.google {
+  background-color: #DD4B39;
+  color: white;
+}
+.linkedin {
+  background-color:#007BB5;
+  color: white;
+}
 /*Footer*/
 footer {
   display: flex;

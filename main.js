@@ -149,7 +149,7 @@ const getSearchResults = async (userInput) => {
 // Request News Function
 const getNews = async (url) => {
     try {
-        const response = await fetch(newsApiURL + url + apiKey); //Send asynchronous request to server 
+        const response = await fetch(newsApiURL + url + apiKey + "&pageSize=50"); //Send asynchronous request to server 
 
         if (response.ok) {
             const responseJson = await response.json();
@@ -177,10 +177,14 @@ function renderNews(articles) {
         ' </div>' +
         ' <div class="share">' +
         '   <img class="storyimage" src="' + article.urlToImage + '" />' +
-        '   <div class="share-buttons"><button type="button" class="tweet" id="tweet ' + index + '">' +
-        '   <i class="fa fa-twitter" aria-hidden="true"></i>Tweet</button>' +
-            '<button type="button" class="facebook" id="facebook ' + index + '">' +
-        '   <i class="fa fa-facebook fa-2"" aria-hidden="true"></i>Post</button></div>' +
+        '   <div class="share-buttons"><button type="button" class="twitter fa fa-twitter" id="tweet ' + index + '">' +
+        '   </button>' +
+        '   <button type="button" class="facebook fa fa-facebook " id="facebook ' + index + '">' +
+        '   </button>' +
+        '   <button type="button" class="google fa fa-google" id="google ' + index + '">' +
+        '   </button>' + 
+        '   <button type="button" class="linkedin fa fa-linkedin" id="linkedin ' + index + '">' +
+        '   </button>' +
         ' </div>' +
         '</div>';
   
