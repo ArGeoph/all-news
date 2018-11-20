@@ -5,6 +5,8 @@ const nextWeb = document.getElementById('nextWeb');
 const hackerNews = document.getElementById('hackerNews');
 const userSearch = document.getElementById('search');
 const searchButton = document.getElementById('searchButton');
+const searchStatus = document.getElementById('searchStatus');
+const searchStatusCloseButton = document.getElementById('searchStatusClose');
 const sourcesList = document.getElementById('newSources');
 const main = document.getElementsByTagName('main')[0];
 const sourcesMap = new Map();
@@ -27,16 +29,33 @@ const initialize = () => {
   sourcesException.push("rbc", "rt", "google-news-ru", "lenta");
 
   //Add event listeners
-  engadget.addEventListener('click', () => addNewsSource(engadgetUrl), false);  
-  recode.addEventListener('click', () => addNewsSource(recodeUrl), false);  
-  nextWeb.addEventListener('click', () => addNewsSource(nextWebUrl), false);  
-  hackerNews.addEventListener('click', () => addNewsSource(hackerNewsUrl), false);
+  engadget.addEventListener('click', (event) => { 
+    $('.sourceButton').removeClass('jqfocus');
+    $(event.currentTarget).addClass('jqfocus');
+    addNewsSource(engadgetUrl);}, false);  
+  recode.addEventListener('click', (event) => { 
+    $('.sourceButton').removeClass('jqfocus');
+    $(event.currentTarget).addClass('jqfocus');
+    addNewsSource(recodeUrl);}, false);  
+  nextWeb.addEventListener('click', (event) => { 
+    $('.sourceButton').removeClass('jqfocus');
+    $(event.currentTarget).addClass('jqfocus');
+    addNewsSource(nextWebUrl);}, false);  
+  hackerNews.addEventListener('click', (event) => { 
+    $('.sourceButton').removeClass('jqfocus');
+    $(event.currentTarget).addClass('jqfocus');
+    addNewsSource(hackerNewsUrl);}, false);
   formObject.addEventListener('submit', () => searchArticles(userSearch.value), false);
-  sourcesList.addEventListener('click', (event) => addNewsSource(event.currentTarget.value) , false);
+  sourcesList.addEventListener('click', (event) => {
+    $('.sourceButton').removeClass('jqfocus');
+    addNewsSource(event.currentTarget.value);} , false);
+  searchStatusCloseButton.addEventListener("click", () => {
+    searchStatus.style.visibility = "hidden";
+  })
 
   //Load default news when page is loaded by the first time, and select the corresponding menu button
   addNewsSource(recodeUrl); 
-  $('#recode').addClass('jqfocus');
+  $('#recode').toggleClass('jqfocus');
 };
 
 //Function initializing map containing news sources and their urls, and adding them to html list
@@ -84,24 +103,30 @@ const initializeNewsSources = () => {
 
 //News callback function used to load and render news from the url 
 const addNewsSource = (sourceUrl) => {
-  //Remove focus from menu button loaded by default
-  $('#recode').removeClass('jqfocus');
-
   main.innerHTML = "";
   getNews(sourceUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
 };
 
-
+//Method 
 const searchArticles = (userInput) => {
   if (userInput === "") {
-    console.log("I'm there");
+
     return;
   }
   else {
-    console.log("I'm here");
-    main.innerHTML = "";
     getSearchResults(userInput).then( (articles) => {
-      renderNews(articles);
+      //check if there's any articles to display
+      if (articles.length > 0) {
+        //remove selection from all buttons
+        $('.sourceButton').removeClass('jqfocus');
+        //Clean the page
+        main.innerHTML = "";
+        renderNews(articles);
+      }  
+      else {
+        searchStatus.style.visibility = "visible";
+        // searchStatus.innerHTML = "Your search request hasn't returned any results. Please try again";
+      }    
     });
   }
 };
@@ -112,7 +137,6 @@ const getSearchResults = async (userInput) => {
     const request = await fetch(`https://newsapi.org/v2/everything?q=${userInput}${apiKey}&pageSize=50`);
     if (request.ok) {
       const requestJson = await request.json();
-      console.log(requestJson.articles);
 
       return requestJson.articles;
     }

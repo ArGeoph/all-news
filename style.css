@@ -20,7 +20,7 @@ h1 {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  width: 64%;
+  width: 75%;
   flex-wrap: nowrap;
   font-family: "Playfair Display";
   border-bottom: solid 3px #ffffff;
@@ -81,7 +81,6 @@ h1 {
 
 #searchButton {
   font-family: "Source Sans Pro";
-
   font-size: 1em;
   border: 0px;
   width: 60px;
@@ -94,6 +93,28 @@ h1 {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
+
+#searchStatus {
+  padding: 10px 0px;
+  margin: 0px 0px;
+  /* border: 1px solid palevioletred; */
+  color: red;
+  text-align: center;
+  visibility: hidden;
+  font-size: 1.2em;
+}
+.close {
+  margin: 0px 0px;
+  width: 28px;
+  height: 28px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  background-color: rgba(238, 88, 88, 0.6);
+}
+
 #addMoreSources {
   width: 60px;
   font-family: Source Sans Pro;
