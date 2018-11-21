@@ -122,6 +122,7 @@ const searchArticles = (userInput) => {
         $('.sourceButton').removeClass('jqfocus');
         //Clean the page
         main.innerHTML = "";
+        searchStatus.style.visibility = "hidden";
         renderNews(articles);
       }  
       else {
@@ -153,6 +154,7 @@ const getNews = async (url) => {
         const response = await fetch(newsApiURL + url + apiKey + "&pageSize=50"); //Send asynchronous request to server 
 
         if (response.ok) {
+            searchStatus.style.visibility = "hidden";
             const responseJson = await response.json();
 
             return responseJson.articles;

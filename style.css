@@ -195,7 +195,7 @@ button:focus {
 }
 
 .articlerow {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   padding: 30px;
   justify-content: space-around;
@@ -210,7 +210,7 @@ button:focus {
 
 .share {
   width: 38%;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
