@@ -36,16 +36,12 @@ h1 {
   letter-spacing: 0.5px;
   color: black;
   width: 200px;
-  height: 40px;
+  height: 45px;
 }
 
 #newSources:hover {
   border: solid 3px blue;
   box-shadow: -2px -2px 7px blue;
-}
-#addMoreSources {
-  margin: 24px 0 0 0;
-  width: 50px;
 }
 
 .sourceButton {
@@ -59,7 +55,7 @@ h1 {
   background-color: transparent;
   border: 0px;
   width: 200px;
-  height: 40px;
+  height: 45px;
   padding: 5px;
   margin-bottom: 0;
 }
@@ -72,7 +68,7 @@ h1 {
   color: black;
   border: 0px;
   width: 200px;
-  height: 40px;
+  height: 45px;
   padding: 5px;
   margin-top: 18px;
   margin-left: 10px;
@@ -84,7 +80,7 @@ h1 {
   font-size: 1em;
   border: 0px;
   width: 80px;
-  height: 40px;
+  height: 45px;
   margin-top: 18px;
   margin-left: 10px;
   border-radius: 5px;
@@ -116,17 +112,21 @@ h1 {
 }
 
 #addMoreSources {
-  width: 60px;
-  font-family: Source Sans Pro;
-  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-size: 1.25em;
   font-weight: 600;
   line-height: 0.94;
   letter-spacing: 0.5px;
   text-align: center;
+  width: 90px;
+  height: 45px;
+  font-weight: 600;
   color: #ffffff;
-  background-color: transparent;
-  margin: 24px 3px 0px 3px;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 0px;
   border-radius: 5px;
+  border: none;
 }
 .sticky {
   position: fixed;
@@ -137,7 +137,7 @@ h1 {
   margin: 0;
   padding: 0;
 }
-#addMoreSources:hover, #engadget:hover, #recode:hover, #nextWeb:hover, #hackerNews:hover {
+#engadget:hover, #recode:hover, #nextWeb:hover, #hackerNews:hover {
   border: solid 3px blue;
   box-shadow: -2px -2px 7px blue;
   padding-bottom: 3px;
