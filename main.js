@@ -172,14 +172,14 @@ function renderNews(articles) {
         let articleRow =
         '<div class="articlerow">' +
         ' <div class="article">' +
-        '   <h2 class="title">' + article.title + '</h2>' +
+        '   <div><h2 class="title">' + article.title + '</h2>' +
         '   <h3>By ' + ((article.author !=null) ? article.author : "John Doe")    + ' on ' + new Date(article.publishedAt).toLocaleString() + '</h3>' +
         '   <p class="content"> ' + ((article.content !=null) && (sourcesException.indexOf(article.source.id) === -1)
             ? (article.content.split("[")[0]) : article.description) + '</p>' +
-        '   <a href="' + article.url + '" target="_blank" class="readmore"><p>Read More</p></a>' +
+        '   <a href="' + article.url + '" target="_blank" class="readmore"><p>Read More</p></a></div>' +
+        '   <div><img class="storyimage" src="' + article.urlToImage + '" /></div>' +
         ' </div>' +
         ' <div class="share">' +
-        '   <img class="storyimage" src="' + article.urlToImage + '" />' +
         '   <div class="share-buttons"><button type="button" class="twitter fa fa-twitter" id="tweet ' + index + '">' +
         '   </button>' +
         '   <button type="button" class="facebook fa fa-facebook " id="facebook ' + index + '">' +
