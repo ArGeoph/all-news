@@ -48,7 +48,7 @@ const initialize = () => {
   formObject.addEventListener('submit', (event) => {
     event.preventDefault();
     searchArticles(userSearch.value);}, false);
-  sourcesList.addEventListener('click', (event) => {
+  sourcesList.addEventListener('change', (event) => {
     $('.sourceButton').removeClass('jqfocus');
     addNewsSource(event.currentTarget.value);} , false);
   searchStatusCloseButton.addEventListener("click", () => {
@@ -63,6 +63,7 @@ const initialize = () => {
 //Function initializing map containing news sources and their urls, and adding them to html list
 const initializeNewsSources = () => {
   //Map used to store urls for new sources
+  sourcesMap.set("Select news", "");
   sourcesMap.set("AlJazeera", "al-jazeera-english");
   sourcesMap.set("ABC", "abc-news");
   sourcesMap.set("BBC", "bbc-news");
@@ -74,7 +75,6 @@ const initializeNewsSources = () => {
   sourcesMap.set("National Geographic", "national-geographic");
   sourcesMap.set("RBC", "rbc");
   sourcesMap.set("The Telegraph", "the-telegraph");
-  sourcesMap.set("New York Times", "the-new-york-times");
   sourcesMap.set("The Guardian", "the-guardian-uk");
   sourcesMap.set("The Washington Post", "the-washington-post");
   sourcesMap.set("Russia Today", "rt");
@@ -96,17 +96,21 @@ const initializeNewsSources = () => {
   sourcesMap.set("TechBusiness Insider", "business-insider");
 
   sourcesMap.forEach((key, value) => {
+    
     let newNewsSource = document.createElement("option");
     newNewsSource.setAttribute("value", key);
     newNewsSource.innerHTML = value;
     sourcesList.appendChild(newNewsSource);
+ 
   });
 };
 
 //News callback function used to load and render news from the url 
 const addNewsSource = (sourceUrl) => {
-  main.innerHTML = "";
-  getNews(sourceUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
+  if (sourceUrl != "") {
+    main.innerHTML = "";
+    getNews(sourceUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
+  }
 };
 
 //Method 
