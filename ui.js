@@ -18,16 +18,16 @@ $(document).ready( () => {
 
     //Add sources button actions
     $("#addMoreSources").click((event) => {
-        $("#newSources").fadeToggle(350);
+        $("#newSources").fadeToggle(1);
 
         //Change add Sources button label
         let buttonLabel = document.getElementById("addMoreSources").innerHTML;
         
-        if ( buttonLabel === "Add +") {
-            document.getElementById("addMoreSources").innerHTML = "X";
+        if ( buttonLabel === "More News +") {
+            document.getElementById("addMoreSources").innerHTML = "Close X";
         }
         else {
-            document.getElementById("addMoreSources").innerHTML = "Add +";
+            document.getElementById("addMoreSources").innerHTML = "More News +";
         }
     });
 });

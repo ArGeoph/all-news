@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -7,27 +7,30 @@
   <link rel="stylesheet" type="text/css" href="reset.css" />
   <link rel="stylesheet" type="text/css" href="style.css" />
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro" rel="stylesheet">
-</head>
+ </head>
 
 <body>
   <h1>All news in one place</h1>
   <div class="container">
-    <form id="sources" class="nav">
+    <form action="#" id="sources" class="nav">
       <button id="engadget" class="sourceButton" type="button">Engadget</button>
       <button id="recode" class="sourceButton" type="button">Recode</button>
       <button id="nextWeb" class="sourceButton" type="button">The Next Web</button>
-      <button id="hackerNews" class="sourceButton" type="button">Hacker News</button>       
+      <button id="hackerNews" class="sourceButton" type="button">Hacker News</button>     
       <select id="newSources" name="newSources"></select>
-      <p id="addMoreSources">Add +</p> 
-    </form>
+      <button id="addMoreSources" class="sourceButton" type="button">More News +</button>  
+      <input id="search" type="search" placeholder="search" autocomplete="off"/>
+      <button id="searchButton"><i class="fa fa-search"></i></button> 
+    </form>    
   </div>
+  <p id="searchStatus">Your search hasn't returned any results. Please try again later
+    <button type="button" id="searchStatusClose" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
 
-  <main>  </main>
+  <main></main>
 
   <footer>&copy; Kirill Golubev 2018</footer>
   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="Shared/jquery-3.3.1.min.js"></script>
   <script src="apiKeys.js"></script>
   <script src="main.js"></script>
   <script src="ui.js"></script>
