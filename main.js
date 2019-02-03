@@ -20,7 +20,6 @@ const nextWebUrl = 'the-next-web';
 const hackerNewsUrl = 'hacker-news';
 
 //Callback function called when page is loaded for the first time
-
 const initialize = () => {
   //Initialize news sources
   initializeNewsSources();
@@ -109,7 +108,11 @@ const initializeNewsSources = () => {
 const addNewsSource = (sourceUrl) => {
   if (sourceUrl != "") {
     main.innerHTML = "";
-    getNews(sourceUrl).then(articlesArray => renderNews(articlesArray)).then(articles => sendTweets(articles));
+
+    getNews(sourceUrl).then(articlesArray => renderNews(articlesArray)).
+    then(articles => sendTweets(articles)).catch((error) => {
+      main.innerHTML = `<p class="error">${error.message}</p>`;
+    });
   }
 };
 
@@ -158,14 +161,15 @@ const getNews = async (url) => {
         const response = await fetch(newsApiURL + url + apiKey + "&pageSize=50"); //Send asynchronous request to server 
 
         if (response.ok) {
-            searchStatus.style.visibility = "hidden";
-            const responseJson = await response.json();
+          searchStatus.style.visibility = "hidden";
+          const responseJson = await response.json();
 
-            return responseJson.articles;
-        }
+          return responseJson.articles;
+        }                                                                                                                                                                                                                                                                     
     }
     catch(networkError) {
        console.log(networkError);
+       throw new Error("News cannot be loaded. Please check your Internet connection or try later");
     }    
 };
 
@@ -198,6 +202,9 @@ function renderNews(articles) {
         '</div>';
   
       main.innerHTML += articleRow;      
+    }
+    else {
+      main.innerHTML = "<p>News cannot be loaded. Please check your Internet connection or try later</p>";
     }
   });
 

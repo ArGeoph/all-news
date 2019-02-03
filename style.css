@@ -332,7 +332,14 @@ footer {
   color: whitesmoke;
   font-size: 2.7em;
 }
+/*Other classes */
+.error {
+  text-align: center;
+  color: red;
+  margin: 260px auto;
+  font-size: 1.6em;
 
+}
 /*To adapt app to different screnn sizes
 ======================================================*/
 @media (max-width: 1590px) {
