@@ -203,9 +203,6 @@ function renderNews(articles) {
   
       main.innerHTML += articleRow;      
     }
-    else {
-      main.innerHTML = "<p>News cannot be loaded. Please check your Internet connection or try later</p>";
-    }
   });
 
   return articles;

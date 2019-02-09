@@ -378,6 +378,13 @@ footer {
   p {
     font-size: 1.15em;
   }
+  .storyimage {
+    margin: 25px 6px;
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+    float: right;
+  }  
 }
 
 @media (max-width: 480px) {
