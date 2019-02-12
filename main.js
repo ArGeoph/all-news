@@ -1,23 +1,27 @@
+//Default news sources buttons
+const bbc = document.getElementById('bbc');
+const cbc = document.getElementById('cbc');
+const cnn = document.getElementById('cnn');
+const techcrunch = document.getElementById('techcrunch');
+//Add new news sources related objects
 const formObject = document.getElementById("sources");
-const engadget = document.getElementById('engadget');
-const recode = document.getElementById('recode');
-const nextWeb = document.getElementById('nextWeb');
-const hackerNews = document.getElementById('hackerNews');
+const sourcesList = document.getElementById('newSources');
+const sourcesMap = new Map();
+const sourcesException = []; //variable used to track all news sources that don't contain proper content, but only description
+//Search related HTML objects
 const userSearch = document.getElementById('search');
 const searchButton = document.getElementById('searchButton');
 const searchStatus = document.getElementById('searchStatus');
 const searchStatusCloseButton = document.getElementById('searchStatusClose');
-const sourcesList = document.getElementById('newSources');
+
 const main = document.getElementsByTagName('main')[0];
-const sourcesMap = new Map();
-const sourcesException = []; //variable used to track all news sources that don't contain proper content, but only description
 
 // News API Data
 const newsApiURL = 'https://newsapi.org/v2/top-headlines?sources=';
-const engadgetUrl = 'engadget';
-const recodeUrl = 'recode';
-const nextWebUrl = 'the-next-web';
-const hackerNewsUrl = 'hacker-news';
+const bbcURL = 'bbc-news';
+const cbcURL = 'cbc-news';
+const cnnURL = 'cnn';
+const techcrunchURL = 'techcrunch';
 
 //Callback function called when page is loaded for the first time
 const initialize = () => {
@@ -28,22 +32,22 @@ const initialize = () => {
   sourcesException.push("rbc", "rt", "google-news-ru", "lenta");
 
   //Add event listeners
-  engadget.addEventListener('click', (event) => { 
+  bbc.addEventListener('click', (event) => { 
     $('.sourceButton').removeClass('jqfocus');
     $(event.currentTarget).addClass('jqfocus');
-    addNewsSource(engadgetUrl);}, false);  
-  recode.addEventListener('click', (event) => { 
+    addNewsSource(bbcURL);}, false);  
+  cbc.addEventListener('click', (event) => { 
     $('.sourceButton').removeClass('jqfocus');
     $(event.currentTarget).addClass('jqfocus');
-    addNewsSource(recodeUrl);}, false);  
-  nextWeb.addEventListener('click', (event) => { 
+    addNewsSource(cbcURL);}, false);  
+  cnn.addEventListener('click', (event) => { 
     $('.sourceButton').removeClass('jqfocus');
     $(event.currentTarget).addClass('jqfocus');
-    addNewsSource(nextWebUrl);}, false);  
-  hackerNews.addEventListener('click', (event) => { 
+    addNewsSource(cnnURL);}, false); 
+  techcrunch.addEventListener('click', (event) => { 
     $('.sourceButton').removeClass('jqfocus');
     $(event.currentTarget).addClass('jqfocus');
-    addNewsSource(hackerNewsUrl);}, false);
+    addNewsSource(techcrunchURL);}, false);   
   formObject.addEventListener('submit', (event) => {
     event.preventDefault();
     searchArticles(userSearch.value);}, false);
@@ -55,19 +59,15 @@ const initialize = () => {
   })
 
   //Load default news when page is loaded by the first time, and select the corresponding menu button
-  addNewsSource(recodeUrl); 
-  $('#recode').toggleClass('jqfocus');
+  addNewsSource(bbcURL); 
+  $('#bbc').toggleClass('jqfocus');
 };
 
 //Function initializing map containing news sources and their urls, and adding them to html list
 const initializeNewsSources = () => {
-  //Map used to store urls for new sources
+  //Map used to store urls for new news sources
   sourcesMap.set("Select news", "");
   sourcesMap.set("AlJazeera", "al-jazeera-english");
-  sourcesMap.set("ABC", "abc-news");
-  sourcesMap.set("BBC", "bbc-news");
-  sourcesMap.set("CBC", "cbc-news");
-  sourcesMap.set("CNN", "cnn");
   sourcesMap.set("Google News Canada", "google-news-ca");
   sourcesMap.set("Google News Russia", "google-news-ru");
   sourcesMap.set("New Scientist", "new-scientist");
@@ -80,6 +80,9 @@ const initializeNewsSources = () => {
   sourcesMap.set("Wired", "wired");
   sourcesMap.set("The Huffington Post", "wired");
   sourcesMap.set("BBC Sport", "bbc-sport");
+  sourcesMap.set("Next web", "nextWeb");
+  sourcesMap.set("Recode", "recode");
+  sourcesMap.set("Hacker News", "hackerNews");
   sourcesMap.set("Buzzfeed", "buzzfeed");
   sourcesMap.set("Financial Times", "financial-times");
   sourcesMap.set("Fox News", "fox-news");
@@ -87,7 +90,6 @@ const initializeNewsSources = () => {
   sourcesMap.set("Lenta", "lenta");
   sourcesMap.set("Reddit /r/all", "reddit-r-all");
   sourcesMap.set("The Economist", "the-economist");
-  sourcesMap.set("TechCrunch", "techcrunch");
   sourcesMap.set("USA Today", "usa-today");
   sourcesMap.set("Ars Technica", "ars-technica");
   sourcesMap.set("Entertainment Weekly", "entertainment-weekly");
@@ -99,13 +101,13 @@ const initializeNewsSources = () => {
     let newNewsSource = document.createElement("option");
     newNewsSource.setAttribute("value", key);
     newNewsSource.innerHTML = value;
-    sourcesList.appendChild(newNewsSource);
- 
+    sourcesList.appendChild(newNewsSource); 
   });
 };
 
 //News callback function used to load and render news from the url 
 const addNewsSource = (sourceUrl) => {
+
   if (sourceUrl != "") {
     main.innerHTML = "";
 
@@ -158,7 +160,7 @@ const getSearchResults = async (userInput) => {
 // Request News Function
 const getNews = async (url) => {
     try {
-        const response = await fetch(newsApiURL + url + apiKey + "&pageSize=50"); //Send asynchronous request to server 
+        const response = await fetch(newsApiURL + url + apiKey + "&pageSize=90"); //Send asynchronous request to server 
 
         if (response.ok) {
           searchStatus.style.visibility = "hidden";
