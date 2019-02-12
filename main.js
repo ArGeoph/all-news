@@ -222,22 +222,26 @@ function sendTweets(newsObjects) {
     tweetButtons[i].addEventListener('click', function() {
       Twitter.postStatus(newsObjects[i].url);
       tweetButtons[i].classList.add("rotate");
-      facebookButtons[i].classList.add("clicked");
+      tweetButtons[i].classList.add("clicked");
+      tweetButtons[i].disabled = true;
     }, false);
     //Add event listeners to facebook buttons
     facebookButtons[i].addEventListener('click', function() {
       facebookButtons[i].classList.add("rotate");
       facebookButtons[i].classList.add("clicked");
+      facebookButtons[i].disabled = true;
     }, false);
     //Add event listeners to google buttons
     googleButtons[i].addEventListener('click', function() {
       googleButtons[i].classList.add("rotate");
       googleButtons[i].classList.add("clicked");
+      googleButtons[i].disabled = true;
+      
     }, false);
     //Add event listeners to linkedIn buttons
     linkedInButtons[i].addEventListener('click', function() {
       linkedInButtons[i].classList.add("rotate");
-      facebookButtons[i].disabled = true;
+      linkedInButtons[i].disabled = true;
     }, false);
   }
 }

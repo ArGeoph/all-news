@@ -146,7 +146,7 @@ h1 {
   margin: 0;
   padding: 0;
 }
-#engadget:hover, #recode:hover, #nextWeb:hover, #hackerNews:hover {
+#bbc:hover, #cbc:hover, #cnn:hover, #techcrunch:hover {
   border: solid 3px blue;
   box-shadow: -2px -2px 7px blue;
   padding-bottom: 3px;
@@ -156,7 +156,7 @@ h1 {
   border: solid 3px blue;
   box-shadow: -2px -2px 7px blue;
 }
-.jqfocus, #engadget:focus, #recode:focus, #nextWeb:focus, #hackerNews:focus {
+.jqfocus, #bbc:focus, #cbc:focus, #cnn:focus, #techcrunch:focus {
   border-bottom: none;
   border-left: solid 3px white;
   border-right: solid 3px white;
@@ -310,11 +310,11 @@ button {
 }
 
 .rotate {
-  transform: rotate(360deg) scale(0.9);
-  -webkit-transform: rotate(360deg) scale(1.1);
-  -moz-transform: rotate(360deg) scale(0.9);
-  -ms-transform: rotate(360deg) scale(0.7);
-  -o-transform: rotate(360deg) scale(0.7);
+  transform: rotate(360deg) scale(0.85);
+  -webkit-transform: rotate(360deg) scale(0.85);
+  -moz-transform: rotate(360deg) scale(0.85);
+  -ms-transform: rotate(360deg) scale(0.85);
+  -o-transform: rotate(360deg) scale(0.85);
   transition-duration: 1.2s;
 }
 .clicked {
