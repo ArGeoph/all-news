@@ -213,10 +213,31 @@ function renderNews(articles) {
 // Post Tweet Function
 function sendTweets(newsObjects) {
   let tweetButtons = document.getElementsByClassName('twitter');
+  let facebookButtons = document.getElementsByClassName('facebook');
+  let googleButtons = document.getElementsByClassName('google');
+  let linkedInButtons = document.getElementsByClassName('linkedin');
+  let commentsButtons = document.getElementsByClassName('comments');
+
   for (let i = 0; i < tweetButtons.length; i++) {
     tweetButtons[i].addEventListener('click', function() {
       Twitter.postStatus(newsObjects[i].url);
       tweetButtons[i].classList.add("rotate");
+      facebookButtons[i].classList.add("clicked");
+    }, false);
+    //Add event listeners to facebook buttons
+    facebookButtons[i].addEventListener('click', function() {
+      facebookButtons[i].classList.add("rotate");
+      facebookButtons[i].classList.add("clicked");
+    }, false);
+    //Add event listeners to google buttons
+    googleButtons[i].addEventListener('click', function() {
+      googleButtons[i].classList.add("rotate");
+      googleButtons[i].classList.add("clicked");
+    }, false);
+    //Add event listeners to linkedIn buttons
+    linkedInButtons[i].addEventListener('click', function() {
+      linkedInButtons[i].classList.add("rotate");
+      facebookButtons[i].disabled = true;
     }, false);
   }
 }
