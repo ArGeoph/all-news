@@ -11,8 +11,6 @@ const sourcesException = []; //variable used to track all news sources that don'
 //Search related HTML objects
 const userSearch = document.getElementById('search');
 const searchButton = document.getElementById('searchButton');
-const searchStatus = document.getElementById('searchStatus');
-const searchStatusCloseButton = document.getElementById('searchStatusClose');
 
 const main = document.getElementsByTagName('main')[0];
 
@@ -54,9 +52,6 @@ const initialize = () => {
   sourcesList.addEventListener('change', (event) => {
     $('.sourceButton').removeClass('jqfocus');
     addNewsSource(event.currentTarget.value);} , false);
-  searchStatusCloseButton.addEventListener("click", () => {
-    searchStatus.style.visibility = "hidden";
-  })
 
   //Load default news when page is loaded by the first time, and select the corresponding menu button
   addNewsSource(bbcURL); 
@@ -98,8 +93,7 @@ const initializeNewsSources = () => {
   sourcesMap.set("Business Insider (UK)", "business-insider-uk");
   sourcesMap.set("TechBusiness Insider", "business-insider");
 
-  sourcesMap.forEach((key, value) => {
-    
+  sourcesMap.forEach((key, value) => {    
     let newNewsSource = document.createElement("option");
     newNewsSource.setAttribute("value", key);
     newNewsSource.innerHTML = value;
@@ -107,14 +101,13 @@ const initializeNewsSources = () => {
   });
 };
 
-//News callback function used to load and render news from the url 
+//News callback function used to load and render news from the url passed as a parameter
 const addNewsSource = (sourceUrl) => {
-
   if (sourceUrl != "") {
-    main.innerHTML = "";
+    main.innerHTML = '<div class="spinner"></div>';
 
     getNews(sourceUrl).then(articlesArray => renderNews(articlesArray)).
-    then(articles => sendTweets(articles)).catch((error) => {
+    then(articles => addSocialNetworksFunctionality(articles)).catch((error) => {
       main.innerHTML = `<p class="error">${error.message}</p>`;
     });
   }
@@ -131,14 +124,11 @@ const searchArticles = (userInput) => {
       if (articles.length > 0) {
         //remove selection from all buttons
         $('.sourceButton').removeClass('jqfocus');
-        //Clean the page
-        main.innerHTML = "";
-        searchStatus.style.visibility = "hidden";
         renderNews(articles);
       }  
       else {
-        searchStatus.style.visibility = "visible";
-        userSearch.value = "";
+        //Print error message if search hasn't returned any results
+        main.innerHTML = "<p class='error'>Your search hasn't returned any results.Please try again later or check your Internet connection</p>";
       }    
     });
   }
@@ -147,6 +137,8 @@ const searchArticles = (userInput) => {
 //Request search results from news API 
 const getSearchResults = async (userInput) => {
   try {
+    //Clean the page and put spinner element
+    main.innerHTML = '<div class="spinner"></div>';
     const request = await fetch(`https://newsapi.org/v2/everything?sortBy=published&q=${userInput}${apiKey}&pageSize=50`);
     if (request.ok) {
       const requestJson = await request.json();
@@ -165,7 +157,6 @@ const getNews = async (url) => {
         const response = await fetch(newsApiURL + url + apiKey + "&pageSize=90"); //Send asynchronous request to server 
 
         if (response.ok) {
-          searchStatus.style.visibility = "hidden";
           const responseJson = await response.json();
 
           return responseJson.articles;
@@ -177,8 +168,9 @@ const getNews = async (url) => {
     }    
 };
 
-// Render Function
+// Render News Function
 function renderNews(articles) {
+  main.innerHTML = ""; 
   articles.map((article, index) => {
     if (index > 0 && article.description != null) {
         let articleRow =
@@ -213,7 +205,7 @@ function renderNews(articles) {
 }
 
 // Post Tweet Function
-function sendTweets(newsObjects) {
+function addSocialNetworksFunctionality(newsObjects) {
   let tweetButtons = document.getElementsByClassName('twitter');
   let facebookButtons = document.getElementsByClassName('facebook');
   let googleButtons = document.getElementsByClassName('google');
@@ -222,7 +214,6 @@ function sendTweets(newsObjects) {
 
   for (let i = 0; i < tweetButtons.length; i++) {
     tweetButtons[i].addEventListener('click', function() {
-      Twitter.postStatus(newsObjects[i].url);
       tweetButtons[i].classList.add("rotate");
       tweetButtons[i].classList.add("clicked");
       tweetButtons[i].disabled = true;

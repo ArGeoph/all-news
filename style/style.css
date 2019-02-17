@@ -1,10 +1,10 @@
 @font-face {
   font-family: "Roboto";
-  src: url("Shared/fonts/Roboto-Regular.ttf");
+  src: url("fonts/Roboto-Regular.ttf");
 }
 @font-face {
   font-family: "Indie Flower";
-  src: url("Shared/fonts/IndieFlower.ttf");
+  src: url("fonts/IndieFlower.ttf");
 }
 /*Main content styling
 ====================================*/
@@ -100,27 +100,6 @@ h1 {
   -o-border-radius: 5px;
 }
 
-#searchStatus {
-  padding: 10px 0px;
-  margin: 0px 0px;
-  /* border: 1px solid palevioletred; */
-  color: red;
-  text-align: center;
-  visibility: hidden;
-  font-size: 1.2em;
-}
-.close {
-  margin: 0px 0px;
-  width: 26px;
-  height: 26px;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  background-color: rgba(238, 88, 88, 0.6);
-}
-
 #addMoreSources {
   font-size: 1.25em;
   font-weight: 600;
@@ -142,9 +121,10 @@ h1 {
   top: -15px;
   z-index: 100;
   width: 100%;
-  background-color: rgba(233, 126, 206, 0.8);
+  background-color: rgba(156, 24, 123, 0.8);
   margin: 0;
   padding: 0;
+  border-bottom: none;
 }
 #bbc:hover, #cbc:hover, #cnn:hover, #techcrunch:hover {
   border: solid 3px blue;
