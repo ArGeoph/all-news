@@ -80,10 +80,12 @@ const initializeNewsSources = () => {
   sourcesMap.set("Wired", "wired");
   sourcesMap.set("The Huffington Post", "wired");
   sourcesMap.set("BBC Sport", "bbc-sport");
-  sourcesMap.set("Next web", "nextWeb");
+  sourcesMap.set("Next web", "the-next-web");
   sourcesMap.set("Recode", "recode");
+  sourcesMap.set("Crypto News", "crypto-coins-news")
   sourcesMap.set("Hacker News", "hackerNews");
   sourcesMap.set("Buzzfeed", "buzzfeed");
+  sourcesMap.set("Time", "time");
   sourcesMap.set("Financial Times", "financial-times");
   sourcesMap.set("Fox News", "fox-news");
   sourcesMap.set("Independent", "independent");
@@ -145,7 +147,7 @@ const searchArticles = (userInput) => {
 //Request search results from news API 
 const getSearchResults = async (userInput) => {
   try {
-    const request = await fetch(`https://newsapi.org/v2/everything?q=${userInput}${apiKey}&pageSize=50`);
+    const request = await fetch(`https://newsapi.org/v2/everything?sortBy=published&q=${userInput}${apiKey}&pageSize=50`);
     if (request.ok) {
       const requestJson = await request.json();
 
