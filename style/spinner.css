@@ -1,11 +1,11 @@
 .spinner {
-    margin: 17% auto;
-    height: 130px;
-    width: 130px;
+    margin: 20% auto;
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
     border: 12px solid rgb(243, 232, 232);
-    border-top: 12px solid rgb(97, 97, 87);
-    animation: spin 1.2s linear infinite;
+    border-top: 12px solid rgb(37, 37, 34);
+    animation: spin 1s linear infinite;
 }
 
 @keyframes spin {

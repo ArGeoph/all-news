@@ -73,12 +73,12 @@ const initializeNewsSources = () => {
   sourcesMap.set("The Washington Post", "the-washington-post");
   sourcesMap.set("Russia Today", "rt");
   sourcesMap.set("Wired", "wired");
-  sourcesMap.set("The Huffington Post", "wired");
+  sourcesMap.set("The Huffington Post", "the-huffington-post");
   sourcesMap.set("BBC Sport", "bbc-sport");
   sourcesMap.set("Next web", "the-next-web");
   sourcesMap.set("Recode", "recode");
   sourcesMap.set("Crypto News", "crypto-coins-news")
-  sourcesMap.set("Hacker News", "hackerNews");
+  sourcesMap.set("Hacker News", "hacker-news");
   sourcesMap.set("Buzzfeed", "buzzfeed");
   sourcesMap.set("Time", "time");
   sourcesMap.set("Financial Times", "financial-times");

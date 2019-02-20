@@ -53,7 +53,6 @@ h1 {
 
 #newSources:hover {
   border: solid 3px blue;
-  box-shadow: -2px -2px 7px blue;
 }
 
 .sourceButton {
@@ -127,8 +126,9 @@ h1 {
   border-bottom: none;
 }
 #bbc:hover, #cbc:hover, #cnn:hover, #techcrunch:hover {
-  border: solid 3px blue;
-  box-shadow: -2px -2px 7px blue;
+  border: solid 2px blue;
+  box-shadow: -4px -4px 15px rgb(66, 66, 73);
+  background-color: rgb(150, 65, 247);
   padding-bottom: 3px;
 }
 
@@ -137,7 +137,6 @@ h1 {
   box-shadow: -2px -2px 7px blue;
 }
 .jqfocus, #bbc:focus, #cbc:focus, #cnn:focus, #techcrunch:focus {
-  border-bottom: none;
   border-left: solid 3px white;
   border-right: solid 3px white;
   border-top: solid 3px white;
@@ -377,6 +376,10 @@ footer {
     width: 98%;
   }
 
+  .jqfocus, #bbc:focus, #cbc:focus, #cnn:focus, #techcrunch:focus {
+    border-bottom: solid 3px white;
+  }
+
   .readmore p {
     text-align: center;
   }
@@ -384,6 +387,20 @@ footer {
   .storyimage {
     width: 100%;
     height: auto;
+  }
+
+  #search {
+    font-size: 1em;
+    line-height: 0.9;
+    letter-spacing: 0.3px;
+    color: black;
+    border: 0px;
+    width: 100px;
+    height: 35px;
+    padding: 10px;
+    margin-top: 18px;
+    margin-left: 10px;
+    border-radius: 5px;
   }
 
   a {
