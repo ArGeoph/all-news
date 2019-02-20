@@ -85,19 +85,23 @@ h1 {
 }
 
 #searchButton {
-  display: flex;
-  font-size: 1.2em;
-  justify-content: center;
+  background-color: rgb(21, 137, 245);
+  border: 2px solid black;
+  text-align: center;
+  font-size: 1.3em;
   width: 80px;
-  height: 46px;
-  margin-top: 18px;
+  height: 44px;
+  margin-top: 17px;
   margin-left: 10px;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+  color: rgb(0, 0, 0);
 }
+
+#searchButton:hover {
+  background-color: rgb(78, 163, 243);
+  width: 81px;
+  height: 45px;
+}
+
 
 #addMoreSources {
   font-size: 1.25em;
@@ -395,8 +399,8 @@ footer {
     letter-spacing: 0.3px;
     color: black;
     border: 0px;
-    width: 100px;
-    height: 35px;
+    width: 140px;
+    height: 40px;
     padding: 10px;
     margin-top: 18px;
     margin-left: 10px;

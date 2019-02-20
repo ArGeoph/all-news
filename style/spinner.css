@@ -3,8 +3,8 @@
     height: 80px;
     width: 80px;
     border-radius: 50%;
-    border: 12px solid rgb(243, 232, 232);
-    border-top: 12px solid rgb(37, 37, 34);
+    border: 8px solid rgb(252, 251, 251);
+    border-top: 8px solid rgb(37, 37, 34);
     animation: spin 1s linear infinite;
 }
 
