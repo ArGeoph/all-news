@@ -94,14 +94,18 @@ h1 {
   margin-top: 17px;
   margin-left: 10px;
   color: rgb(0, 0, 0);
+  border: solid 2px blue;
+
 }
 
 #searchButton:hover {
-  background-color: rgb(78, 163, 243);
+  /* background-color: rgb(78, 163, 243); */
   width: 81px;
   height: 45px;
+  box-shadow: -2px -2px 15px rgb(66, 66, 73);
+  background-color: rgb(150, 65, 247);
+  padding-bottom: 3px;
 }
-
 
 #addMoreSources {
   font-size: 1.25em;
@@ -124,7 +128,7 @@ h1 {
   top: -15px;
   z-index: 100;
   width: 100%;
-  background-color: rgba(156, 24, 123, 0.8);
+  background-color: rgba(146, 11, 110, 0.8);
   margin: 0;
   padding: 0;
   border-bottom: none;
@@ -144,7 +148,7 @@ h1 {
   border-left: solid 3px white;
   border-right: solid 3px white;
   border-top: solid 3px white;
-  background-color: rgba(0, 162, 255, 0.5);
+  background-color: rgb(21, 137, 245);
 }
 
 /*Articles, ie main content */
@@ -178,7 +182,6 @@ p {
 i {
   padding: 5px;
 }
-
 
 .articlerow {
   display: flex;
@@ -270,6 +273,7 @@ button {
   background-color: #DD4B39;
   color: white;
 }
+
 .google:hover {
   background-color: rgb(221, 40, 16);
   border: 1px solid rgb(201, 196, 196)
@@ -279,6 +283,7 @@ button {
   background-color:#007BB5;
   color: white;
 }
+
 .linkedin:hover {
   background-color:rgb(1, 86, 126);
   border: 1px solid rgb(201, 196, 196)
@@ -287,6 +292,7 @@ button {
 .comments {
   background-color: rgb(163, 113, 113);
 }
+
 .comments:hover {
   background-color: rgb(156, 86, 86);
   border: 1px solid rgb(201, 196, 196)
@@ -300,9 +306,7 @@ button {
   -o-transform: rotate(360deg) scale(0.85);
   transition-duration: 1.2s;
 }
-.clicked {
 
-}
 /*Footer*/
 footer {
   font-family: "Indie Flower";
