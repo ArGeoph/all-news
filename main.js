@@ -17,6 +17,7 @@ const main = document.getElementsByTagName('main')[0];
 
 // News API Data
 const newsApiURL = 'https://newsapi.org/v2/top-headlines?sources=';
+const topHeadlinesURL = 'https://newsapi.org/v2/top-headlines?country=ca&apiKey=';
 const bbcURL = 'bbc-news';
 const cbcURL = 'cbc-news';
 const cnnURL = 'cnn';
@@ -56,7 +57,7 @@ const initialize = () => {
 
   //Load default news when page is loaded by the first time, and select the corresponding menu button
   addNewsSource(bbcURL); 
-  $('#bbc').toggleClass('jqfocus');
+  $('#bbc').toggleClass('jqfocus');  
 };
 
 //Function initializing map containing news sources and their urls, and adding them to html list
@@ -145,7 +146,7 @@ const initializeNewsSources = () => {
         }
       } 
     }); 
-    
+
     //Append category to select HTML object
     if (category !== '') {
       sourcesList.appendChild(categoryObject);

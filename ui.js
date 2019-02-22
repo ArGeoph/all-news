@@ -29,11 +29,11 @@ $(document).ready( () => {
         //Change add Sources button label
         let buttonLabel = document.getElementById("addMoreSources").innerHTML;
         
-        if ( buttonLabel === "More News +") {
+        if ( buttonLabel === "More +") {
             document.getElementById("addMoreSources").innerHTML = "Close X";
         }
         else {
-            document.getElementById("addMoreSources").innerHTML = "More News +";
+            document.getElementById("addMoreSources").innerHTML = "More +";
         }
     });
 });
