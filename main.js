@@ -1,15 +1,15 @@
-//Default news sources buttons
+// Default news sources buttons
 const bbc = document.getElementById('bbc');
 const cbc = document.getElementById('cbc');
 const cnn = document.getElementById('cnn');
 const techcrunch = document.getElementById('techcrunch');
-//Add new news sources related objects
+// Add new news sources related objects
 const formObject = document.getElementById("sources");
 const sourcesList = document.getElementById('newSources');
 const sourcesMap = new Map();
 let newsCategories = [];
 const sourcesException = []; //variable used to track all news sources that don't contain proper content, but only description
-//Search related HTML objects
+// Search related HTML objects
 const userSearch = document.getElementById('search');
 const searchButton = document.getElementById('searchButton');
 
@@ -23,31 +23,43 @@ const cbcURL = 'cbc-news';
 const cnnURL = 'cnn';
 const techcrunchURL = 'techcrunch';
 
-//Callback function called when page is loaded for the first time
+// Callback function called when page is loaded for the first time
 const initialize = () => {
-  //Initialize news sources
+  // Initialize news sources
   initializeNewsSources();
   
-  //Add news sources exception that need special handling (in this case proper rendering of cyrillic letters)
+  // Add news sources exception that need special handling (in this case proper rendering of cyrillic letters)
   sourcesException.push("rbc", "rt", "google-news-ru", "lenta");
 
-  //Add event listeners
+  // Add event listeners
   bbc.addEventListener('click', (event) => { 
-    $('.sourceButton').removeClass('jqfocus');
-    $(event.currentTarget).addClass('jqfocus');
-    addNewsSource(bbcURL);}, false);  
+    if (!event.currentTarget.classList.contains('jqfocus')) { // Check if user clicked news source different from the currently selected
+      $('.sourceButton').removeClass('jqfocus');
+      $(event.currentTarget).addClass('jqfocus');
+      addNewsSource(bbcURL);
+    }
+  }, false);  
   cbc.addEventListener('click', (event) => { 
-    $('.sourceButton').removeClass('jqfocus');
-    $(event.currentTarget).addClass('jqfocus');
-    addNewsSource(cbcURL);}, false);  
+    if (!event.currentTarget.classList.contains('jqfocus')) {  // Check if user clicked news source different from the currently selected
+      $('.sourceButton').removeClass('jqfocus');
+      $(event.currentTarget).addClass('jqfocus');
+      addNewsSource(cbcURL);
+    }
+  }, false);  
   cnn.addEventListener('click', (event) => { 
-    $('.sourceButton').removeClass('jqfocus');
-    $(event.currentTarget).addClass('jqfocus');
-    addNewsSource(cnnURL);}, false); 
+    if (!event.currentTarget.classList.contains('jqfocus')) { // Check if user clicked news source different from the currently selected
+      $('.sourceButton').removeClass('jqfocus');
+      $(event.currentTarget).addClass('jqfocus');
+      addNewsSource(cnnURL);
+    }
+  }, false); 
   techcrunch.addEventListener('click', (event) => { 
-    $('.sourceButton').removeClass('jqfocus');
-    $(event.currentTarget).addClass('jqfocus');
-    addNewsSource(techcrunchURL);}, false);   
+    if (!event.currentTarget.classList.contains('jqfocus')) { // Check if user clicked news source different from the currently selected
+      $('.sourceButton').removeClass('jqfocus');
+      $(event.currentTarget).addClass('jqfocus');
+      addNewsSource(techcrunchURL);
+    }
+  }, false);   
   formObject.addEventListener('submit', (event) => {
     event.preventDefault();
     searchArticles(userSearch.value);}, false);
@@ -55,14 +67,14 @@ const initialize = () => {
     $('.sourceButton').removeClass('jqfocus');
     addNewsSource(event.currentTarget.value);} , false);
 
-  //Load default news when page is loaded by the first time, and select the corresponding menu button
+  // Load default news when page is loaded by the first time, and select the corresponding menu button
   addNewsSource(bbcURL); 
   $('#bbc').toggleClass('jqfocus');  
 };
 
-//Function initializing map containing news sources and their urls, and adding them to html list
+// Function initializing map containing news sources and their urls, and adding them to html list
 const initializeNewsSources = () => {
-  //Map used to store urls for new news sources
+  // Map used to store urls for new news sources
   sourcesMap.set("Select news", { category: '',
                                   url: ''});
   sourcesMap.set("AlJazeera", { category: 'World News',
