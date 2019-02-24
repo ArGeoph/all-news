@@ -122,10 +122,21 @@ const initializeNewsSources = () => {
                                             url: "entertainment-weekly"});
   sourcesMap.set("Business Insider", { category: 'Business News',
                                        url: "business-insider"});
-  //Fill up categories array
+  sourcesMap.set("The New York Times", { category: 'World News',
+      url: "the-new-york-times"});
+  sourcesMap.set("The Wall Street Journal", { category: 'Business News',
+      url: "the-wall-street-journal"});
+  sourcesMap.set("The Globe and Mail", { category: 'World News',
+      url: "the-globe-and-mail"});
+  sourcesMap.set("New York Magazine", { category: 'World News',
+      url: "new-york-magazine"});
+  sourcesMap.set("Polygon", { category: 'Entertainment',
+      url: "polygon"});
+
+  // Fill up categories array
   newsCategories = ['', 'World News', 'Business News', 'Technologies', 'Entertainment', 'Russian News', 'Sport'];
 
-  //Create and fill up dropdownlist with categories
+  // Create and fill up dropdownlist with categories
   newsCategories.forEach(category => {
     let categoryObject = document.createElement('optgroup');
     categoryObject.setAttribute('label', category);
