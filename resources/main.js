@@ -144,6 +144,14 @@ const initializeNewsSources = () => {
       url: "new-york-magazine"});
   sourcesMap.set("Polygon", { category: 'Entertainment',
       url: "polygon"});
+  sourcesMap.set("Next Big Future", { category: 'Technologies',
+      url: "next-big-future"});
+  sourcesMap.set("Mirror", { category: 'Entertainment',
+      url: "mirror"});
+  sourcesMap.set("The Sport Bible", { category: 'Sport',
+      url: "the-sport-bible"});
+  sourcesMap.set("ESPN", { category: 'Sport',
+      url: "espn"});
 
   // Fill up categories array
   newsCategories = ['', 'World News', 'Business News', 'Technologies', 'Entertainment', 'Russian News', 'Sport'];
