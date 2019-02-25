@@ -68,7 +68,7 @@ const initialize = () => {
     addNewsSource(event.currentTarget.value);} , false);
 
   // Load default news when page is loaded by the first time, and select the corresponding menu button
-  // addNewsSource(bbcURL); 
+  addNewsSource(bbcURL); 
   $('#bbc').toggleClass('jqfocus');  
 };
 
@@ -190,7 +190,7 @@ const initializeNewsSources = () => {
 //News callback function used to load and render news from the url passed as a parameter
 const addNewsSource = (sourceUrl) => {
   if (sourceUrl != "") {
-    main.innerHTML = '<div class="spinner"></div>';
+    main.innerHTML = '<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>';
 
     getNews(sourceUrl).then(articlesArray => renderNews(articlesArray)).
     then(articles => addSocialNetworksFunctionality(articles)).catch((error) => {
@@ -225,7 +225,7 @@ const searchArticles = (userInput) => {
 const getSearchResults = async (userInput) => {
   try {
     //Clean the page and put spinner element
-    main.innerHTML = '<div class="spinner"></div>';
+    main.innerHTML = '<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>';
     const request = await fetch(`https://newsapi.org/v2/everything?sortBy=publishedAt&q=${userInput}${apiKey}&pageSize=50`);
     if (request.ok) {
       const requestJson = await request.json();
