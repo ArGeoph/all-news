@@ -68,7 +68,7 @@ const initialize = () => {
     addNewsSource(event.currentTarget.value);} , false);
 
   // Load default news when page is loaded by the first time, and select the corresponding menu button
-  addNewsSource(bbcURL); 
+  // addNewsSource(bbcURL); 
   $('#bbc').toggleClass('jqfocus');  
 };
 
