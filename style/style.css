@@ -236,12 +236,13 @@ i {
   float: right;
 }
 .storyimage:hover {
-  margin-left: 12px;
-  width: 483px;
+  margin-left: 14px;
+  margin-right: 12px;
+  width: 486px;
   box-shadow: -8px 8px 12px grey;
   transition-duration: .3s;
-
 }
+
 button {
   margin: 20px 15px 0px 0px;
   padding: 5px;
@@ -262,11 +263,22 @@ button {
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
 }
+
+.readmore {
+  display: flex;
+  text-decoration: none;
+  font-size: 1.4rem;
+  margin: 0.6rem 0.6rem;
+  color: #130284;
+}
+
 .readmore:hover {
-  color: rgba(0, 153, 255, 0.856);
-  font-size: 110%;
+  text-decoration: underline;
+  color: rgba(10, 44, 236, 0.856);
+  font-size: 1.5rem;
   font-weight: bold;
-  transition-duration: .2s;
+  transition-duration: .3s;
+  margin: 0.55rem 0.6rem;
 }
 .fa {
   text-align: center;
@@ -359,18 +371,28 @@ footer {
   body {
     margin: 0 0;
   }
-
   .storyimage {
-    margin: 10px 5px;
-    width: 400px;
+    margin: 10px auto;
+    width: 90%;
     min-width: 250px;
     height: auto;
+    justify-content: center;
+    align-content: center;
+  }
+  .storyimage:hover {
+    width: 90%;
+    margin: 10px auto;
   }
   .articlerow {
+    justify-content: center;
     margin-left: 0px;
     margin-right: 0px;
     padding-left: 10px;
     padding-right: 10px;
+  }
+  .imageContainer {
+    display: flex;
+    justify-content: center;
   }
   .article{
     display: flex;

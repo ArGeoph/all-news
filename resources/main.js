@@ -274,8 +274,8 @@ function renderNews(articles) {
         '   <h3>By ' + ((article.author !=null) ? article.author : "John Doe")    + ' on ' + new Date(article.publishedAt).toLocaleString() + '</h3>' +
         '   <p class="content"> ' + ((article.content !=null) && (sourcesException.indexOf(article.source.id) === -1)
             ? (article.content.split("[")[0]) : article.description) + '</p>' +
-        '   <a href="' + article.url + '" target="_blank" class="readmore"><p>Read More</p></a></div>' +
-        '   <div><img class="storyimage" src="' + article.urlToImage + '" /></div>' +
+        '   <a href="' + article.url + '" target="_blank noopenner norefferer" class="readmore">Read More</a></div>' +
+        '   <div class="imageContainer"><img class="storyimage" src="' + article.urlToImage + '" /></div>' +
         ' </div>' +
         ' <div class="share">' +
         '   <div class="share-buttons"><button type="button" class="twitter fa fa-twitter" id="tweet ' + index + '">' +
