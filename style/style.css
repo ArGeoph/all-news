@@ -1,0 +1,452 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: "Indie Flower";
+  src: url("fonts/IndieFlower.ttf");
+}
+
+/*Main content styling
+====================================*/
+body {
+  font-family: Roboto;
+  margin: auto;
+  background-color: whitesmoke;
+  animation-delay: .5s;
+}
+main {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+h1 {
+  font-family: "Indie Flower";
+  font-size: 4.4em;
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-align: center;
+  padding: 30px;
+  margin-bottom: 1rem;
+  color: rgba(21, 71, 209, 0.9);
+}
+h1:hover {
+  font-size: 4.45em;
+  color: rgba(0, 68, 255, 0.972);
+  transition-duration: .3s;
+}
+#sources {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 75%;
+  flex-wrap: nowrap;
+  border-bottom: solid 3px #0d43f7;
+}
+#newSources {
+  margin: 19px 0 3px 0;
+  display: none;
+  color: black;
+  width: 10.5rem;
+  height: 50px;
+  margin-bottom: 0px;
+  font-size: 1.25em;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  border: 1px solid black;
+  text-align: center;
+}
+#newSources:hover {
+  border: solid 2px rgb(0, 0, 0);
+}
+.sourceButton {
+  font-size: 1.25em;
+  font-weight: 600;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #111111;
+  background-color: transparent;
+  border: 0px;
+  width: 200px;
+  height: 50px;
+  padding: 5px;
+  margin-bottom: 0;
+  margin-right: 0;
+  border-radius: 0px;
+}
+#search {
+  font-size: 1.25em;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  color: black;
+  border: 1px solid black;
+  width: 10.5rem;
+  height: 50px;
+  padding: 10px;
+  margin-top: 18px;
+  margin-left: -10px;
+}
+#searchButton {
+  background-color: rgb(21, 137, 245);
+  border: 2px solid black;
+  text-align: center;
+  font-size: 1.3em;
+  width: 80px;
+  height: 50px;
+  margin-top: 18px;
+  margin-left: 10px;
+  color: rgb(0, 0, 0);
+  border: solid 2px blue;
+  padding-top: 8px;
+}
+#searchButton:hover {
+  box-shadow: -2px -2px 15px rgb(66, 66, 73);
+  background-color: rgb(150, 65, 247);
+}
+#addMoreSources {
+  font-size: 1.25em;
+  font-weight: 600;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  text-align: center;
+  width: 170px;
+  height: 45px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 0;
+  margin-left: 5px;
+  margin-right: 0px;
+  border: none;
+}
+#addMoreSources:hover {
+  font-size: 1.35em;
+  font-weight: bold;
+  transition-duration: .2s;
+}
+.container {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.menuItemContainer {
+  margin-left: 20px;
+  display: inline-flex;
+}
+.sticky {
+  position: fixed;
+  top: -18px;
+  z-index: 100;
+  width: 100%;
+  background-color: rgba(67, 214, 54, 0.9);
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+}
+#bbc:hover, #cbc:hover, #cnn:hover, #techcrunch:hover {
+  border: solid 2px blue;
+  box-shadow: -4px -4px 15px rgb(66, 66, 73);
+  background-color: rgb(150, 65, 247);
+  padding-bottom: 3px;
+  color: white;
+  font-size: 1.3em;
+  transition-duration: .4s;
+}
+#search:focus {
+  border: solid 2px rgb(0, 0, 0);
+  box-shadow: -1px -1px 15px rgb(123, 123, 124);
+}
+.jqfocus, #bbc:focus, #cbc:focus, #cnn:focus, #techcrunch:focus {
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+  border-top: solid 1px black;
+  border-bottom: none;
+  background-color: rgb(21, 137, 245);
+}
+.jqfocus:hover {
+  background-color: rgb(21, 137, 245);
+}
+
+/* Articles, ie main content */
+h2 {
+  font-size: 2.1em;
+  line-height: 1.3;
+  letter-spacing: 1.2px;
+  color: #130284;
+  padding: 15px 5px;
+}
+.title {
+  display: flex;
+}
+h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #130284;
+  padding: 10px;
+}
+p {
+  font-size: 1.2em;
+  line-height: 2;
+  letter-spacing: 2.3px;
+  text-align: left;
+  color: #130284;
+  padding: 10px;
+}
+i {
+  padding: 5px;
+}
+.articlerow {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  justify-content: space-around;
+  min-height: 250px;  
+  border-bottom: solid 1px #003cff;
+  overflow: visible;
+}
+.article {
+  display: flex;
+  flex-shrink: 2;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.share {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  min-height: 100px;  
+  margin-bottom: 0px;
+  margin-left: 10px;
+}
+.share-buttons {
+  display: inline-flex;
+}
+.storyimage {
+  display: flex;
+  margin: 28px 10px;
+  flex-shrink: 2;
+  width: 480px;
+  min-width: 350px;
+  height: auto;
+  border-radius: 7px;
+  box-shadow: -5px 5px 15px grey;
+  float: right;
+}
+button {
+  margin: 20px 15px 0px 0px;
+  padding: 5px;
+  width: 120px;
+  height: 45px;
+  border-radius: 4px;
+  background-color: #130284;
+  box-shadow: 0;
+  border: 0px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #a5c2e6;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+.readmore:hover {
+  color: rgba(0, 153, 255, 0.856);
+  font-size: 110%;
+  font-weight: bold;
+  transition-duration: .2s;
+}
+.fa {
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+.facebook {
+  background-color: #627AAC;
+  color: white;
+}
+.facebook:hover {
+  background-color: rgb(73, 104, 172);
+}
+.twitter {
+  background-color: #76BCF1;
+  color: white;
+}
+.twitter:hover {
+  background-color: rgb(50, 159, 243);
+}
+.google {
+  background-color: #DD4B39;
+  color: white;
+}
+.google:hover {
+  background-color: rgb(221, 40, 16);
+}
+.linkedin {
+  background-color:#007BB5;
+  color: white;
+}
+.linkedin:hover {
+  background-color:rgb(1, 86, 126);
+}
+.comments {
+  color: white;
+  background-color: rgb(214, 110, 110);
+}
+.comments:hover {
+  background-color:  rgb(209, 65, 65);
+}
+.rotate {
+  transform: rotate(360deg) scale(0.85);
+  -webkit-transform: rotate(360deg) scale(0.85);
+  -moz-transform: rotate(360deg) scale(0.85);
+  -ms-transform: rotate(360deg) scale(0.85);
+  -o-transform: rotate(360deg) scale(0.85);
+  transition-duration: .7s;
+}
+
+/* Footer */
+footer {
+  font-family: "Indie Flower";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: solid 2px white;
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  background-color: #16038f;
+  margin: 0;
+  padding: 0;
+  color: whitesmoke;
+  font-size: 2.7em;
+}
+
+/*Other classes */
+.error {
+  text-align: center;
+  color: red;
+  margin: 260px auto;
+  padding: 10px;
+  font-size: 1.6em;
+}
+
+/*To adapt app to different scren sizes
+======================================================*/
+@media (max-width: 1590px) {
+  #sources {
+    width: 100%;
+  }
+}
+@media (max-width: 870px) {
+  body {
+    margin: 0 0;
+  }
+
+  .storyimage {
+    margin: 10px 5px;
+    width: 400px;
+    min-width: 250px;
+    height: auto;
+  }
+  .articlerow {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sourceButton {
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 0px;
+    margin-left: 0px;
+  }
+  .jqfocus, #bbc:focus, #cbc:focus, #cnn:focus, #techcrunch:focus {
+    border-bottom: solid 1px black;
+    border-radius: 0px;
+  }
+  .article {
+    width: 100%;
+  }
+  .share {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+  }
+  #searchButton {
+    border: 1px solid black;
+    font-size: 1em;
+    width: 60px;
+    height: 38px;
+    margin-top: 17px;
+    margin-left: 10px;
+    padding: 0;
+    padding-top: 4px;
+  }
+  #searchButton:hover {
+    width: 62px;
+    height: 40px;
+    box-shadow: -2px -2px 15px rgb(66, 66, 73);
+    padding-bottom: 3px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0.7rem;
+  }
+  h1 {
+    font-size: 2.65em;
+  }
+  h1:hover {
+    font-size: 2.67em;
+    color: rgba(0, 68, 255, 0.972);
+    transition-duration: .2s;
+  }
+  h2 {
+    font-size: 1.8em;
+  }
+  p {
+    font-size: 1.15em;
+  }
+  #search {
+    font-size: 0.9em;
+    line-height: 0.9;
+    letter-spacing: 0.3px;
+    color: black;
+    width: 9rem;
+    height: 38px;
+    padding: 10px;
+    margin-top: 18px;
+    margin-left: 10px;
+  }
+  #newSources {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    line-height: 0.74;
+    letter-spacing: 0.5px;
+    text-align: center;
+    width: 9rem;
+    height: 38px;
+  }
+  footer {
+    font-size: 2rem;
+    text-align: center;
+  }
+}

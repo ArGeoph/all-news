@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>All news in one place</title>
+  <link rel="stylesheet" type="text/css" href="style/reset.css" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+  <link rel="stylesheet" type="text/css" href="style/spinner.css" />
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+ </head>
+
+<body>
+  
+  <h1>All news in one place</h1>
+  <div class="container">
+    <form action="#" id="sources" class="nav">
+      <button id="bbc" class="sourceButton" type="button">BBC</button>
+      <button id="cbc" class="sourceButton" type="button">CBC</button>
+      <button id="cnn" class="sourceButton" type="button">CNN</button>
+      <button id="techcrunch" class="sourceButton" type="button">Techrunch</button>
+      <div class="menuItemContainer">
+        <select id="newSources" name="newSources"></select>
+        <button id="addMoreSources" class="sourceButton" type="button">More +</button>  
+      </div>
+      <div class="menuItemContainer">
+        <input id="search" type="search" placeholder="search" autocomplete="on"/>
+        <button id="searchButton"><i class="fa fa-search"></i></button> 
+      </div>
+    </form>    
+  </div>
+
+  <main></main>
+
+  <footer>&copy; Kirill Golubev 2019</footer>
+  
+  <script src="utils/jquery-3.3.1.min.js"></script>
+  <script src="resources/apiKeys.js"></script>
+  <script src="resources/main.js"></script>
+  <script src="resources/ui.js"></script>
+</body>
+
+</html>
