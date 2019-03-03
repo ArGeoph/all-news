@@ -155,6 +155,9 @@ h1:hover {
   border: solid 2px rgb(0, 0, 0);
   box-shadow: -1px -1px 15px rgb(123, 123, 124);
 }
+#search:hover {
+  border: solid 2px rgb(0, 0, 0);
+}
 .jqfocus, #bbc:focus, #cbc:focus, #cnn:focus, #techcrunch:focus {
   border-left: solid 1px black;
   border-right: solid 1px black;
