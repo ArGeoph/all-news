@@ -152,11 +152,11 @@ const initializeNewsSources = () => {
       url: "the-sport-bible"});
   sourcesMap.set("ESPN", { category: 'Sport',
       url: "espn"});
-      sourcesMap.set("TalkSport", { category: 'Sport',
+  sourcesMap.set("TalkSport", { category: 'Sport',
       url: "talksport"});
-      sourcesMap.set("Associated Press", { category: 'World News',
+  sourcesMap.set("Associated Press", { category: 'World News',
       url: "associated-press"});
-      sourcesMap.set("RTE", { category: 'World News',
+  sourcesMap.set("RTE", { category: 'World News',
       url: "rte"});
 
   // Fill up categories array
@@ -298,7 +298,9 @@ function renderNews(articles) {
   return articles;
 }
 
+
 // Add functionality to social network buttons
+
 function addSocialNetworksFunctionality(newsObjects) {
   let tweetButtons = document.getElementsByClassName('twitter');
   let facebookButtons = document.getElementsByClassName('facebook');
