@@ -21,7 +21,7 @@ main {
 }
 h1 {
   font-family: "Indie Flower";
-  font-size: 4.4em;
+  font-size: 4.4rem;
   font-weight: bold;
   letter-spacing: 4px;
   text-align: center;
@@ -30,9 +30,10 @@ h1 {
   color: rgba(21, 71, 209, 0.9);
 }
 h1:hover {
-  font-size: 4.45em;
+  font-size: 4.45rem;
   color: rgba(0, 68, 255, 0.972);
   transition-duration: .3s;
+  margin-bottom: 0.95rem;
 }
 #sources {
   display: flex;
@@ -225,7 +226,7 @@ i {
 }
 .storyimage {
   display: flex;
-  margin: 28px 10px;
+  margin: 28px 15px;
   flex-shrink: 2;
   width: 480px;
   min-width: 350px;
@@ -233,6 +234,13 @@ i {
   border-radius: 7px;
   box-shadow: -5px 5px 15px grey;
   float: right;
+}
+.storyimage:hover {
+  margin-left: 12px;
+  width: 483px;
+  box-shadow: -8px 8px 12px grey;
+  transition-duration: .3s;
+
 }
 button {
   margin: 20px 15px 0px 0px;
