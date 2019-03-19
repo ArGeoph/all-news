@@ -92,3 +92,9 @@ sourcesMap.set("Associated Press", { category: 'World News',
 url: "associated-press"});
 sourcesMap.set("RTE", { category: 'World News',
 url: "rte"});
+sourcesMap.set("Metro", { category: 'Entertainment',
+url: "metro"});
+sourcesMap.set("The Times of India", { category: 'World News',
+url: "the-times-of-india"});
+sourcesMap.set("The Jerusalem Post", { category: 'World News',
+url: "the-jerusalem-post"});
