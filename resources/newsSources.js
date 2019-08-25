@@ -21,8 +21,6 @@ sourcesMap.set("RBC", { category: "Russian News",
 url: "rbc"});
 sourcesMap.set("The Telegraph", { category: 'World News',
    url: "the-telegraph"});
-sourcesMap.set("The Guardian", { category: 'World News',
-   url: "the-guardian-uk"});
 sourcesMap.set("The Washington Post", { category: 'World News',
          url: "the-washington-post"});
 sourcesMap.set("Russia Today", { category: "Russian News",
@@ -45,8 +43,6 @@ sourcesMap.set("Buzzfeed", { category: 'Technologies',
 url: "buzzfeed"});
 sourcesMap.set("Time", { category: 'World News',
 url: "time"});
-sourcesMap.set("Financial Times", { category: 'Business News',
-     url:"financial-times"});
 sourcesMap.set("Fox News", { category: "World News",
 url: "fox-news"});
 sourcesMap.set("Independent", { category: "World News",
@@ -55,8 +51,6 @@ sourcesMap.set("Lenta", { category: "Russian News",
 url:"lenta"});
 sourcesMap.set("Reddit /r/all",  { category: 'Entertainment',
      url: "reddit-r-all"});
-sourcesMap.set("The Economist", { category: 'Business News',
-   url: "the-economist"});
 sourcesMap.set("USA Today", "usa-today");
 sourcesMap.set("Ars Technica", { category: 'Technologies',
    url: "ars-technica"});
@@ -98,3 +92,5 @@ sourcesMap.set("The Times of India", { category: 'World News',
 url: "the-times-of-india"});
 sourcesMap.set("The Jerusalem Post", { category: 'World News',
 url: "the-jerusalem-post"});
+
+// End of file

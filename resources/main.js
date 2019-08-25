@@ -241,3 +241,4 @@ function addSocialNetworksFunctionality(newsObjects) {
 
 //Eventlistener to add some actions when page is loaded for the first time
 window.addEventListener("load", initialize, false);
+// End of file
