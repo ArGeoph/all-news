@@ -17,6 +17,8 @@ sourcesMap.set("New Scientist", { category: 'Technologies',
    url: "new-scientist"});
 sourcesMap.set("National Geographic", { category: 'Entertainment',
          url: "national-geographic"});
+sourcesMap.set("National Review", { category: 'World News',
+         url: "national-review"});
 sourcesMap.set("RBC", { category: "Russian News",
 url: "rbc"});
 sourcesMap.set("The Telegraph", { category: 'World News',
@@ -60,6 +62,10 @@ sourcesMap.set("Fortune", { category: 'Business News',
       url: "fortune"});
 sourcesMap.set("Business Insider", { category: 'Business News',
         url: "business-insider"});
+sourcesMap.set("Financial Post", { category: 'Business News',
+url: "financial-post"});
+sourcesMap.set("Australian Financial Review", { category: 'Business News',
+url: "faustralian-financial-review"});
 sourcesMap.set("The New York Times", { category: 'World News',
 url: "the-new-york-times"});
 sourcesMap.set("The Wall Street Journal", { category: 'Business News',
