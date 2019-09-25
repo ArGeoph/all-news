@@ -58,6 +58,8 @@ sourcesMap.set("Ars Technica", { category: 'Technologies',
    url: "ars-technica"});
 sourcesMap.set("Entertainment Weekly", { category: 'Entertainment',
            url: "entertainment-weekly"});
+sourcesMap.set("MTV News", { category: 'Entertainment',
+url: "mtv-news"});
 sourcesMap.set("Fortune", { category: 'Business News',
       url: "fortune"});
 sourcesMap.set("Business Insider", { category: 'Business News',
@@ -65,7 +67,7 @@ sourcesMap.set("Business Insider", { category: 'Business News',
 sourcesMap.set("Financial Post", { category: 'Business News',
 url: "financial-post"});
 sourcesMap.set("Australian Financial Review", { category: 'Business News',
-url: "faustralian-financial-review"});
+url: "australian-financial-review"});
 sourcesMap.set("The New York Times", { category: 'World News',
 url: "the-new-york-times"});
 sourcesMap.set("The Wall Street Journal", { category: 'Business News',
