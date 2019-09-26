@@ -6,7 +6,7 @@ const techcrunch = document.getElementById('techcrunch');
 // Add new news sources related objects
 const formObject = document.getElementById("sources");
 const sourcesList = document.getElementById('newSources');
-// Search related HTML objects
+// Search related DOM objects
 const userSearch = document.getElementById('search');
 const searchButton = document.getElementById('searchButton');
 
@@ -27,7 +27,8 @@ const initialize = () => {
 
   // Add event listeners
   bbc.addEventListener('click', (event) => { 
-    if (!event.currentTarget.classList.contains('jqfocus')) { // Check if user clicked news source different from the currently selected
+    // Check if user clicked news source different from the currently selected
+    if (!event.currentTarget.classList.contains('jqfocus')) { 
       $('.sourceButton').removeClass('jqfocus');
       $(event.currentTarget).addClass('jqfocus');
       addNewsSource(bbcURL);
@@ -74,7 +75,7 @@ const initializeNewsSources = () => {
     let categoryObject = document.createElement('optgroup');
     categoryObject.setAttribute('label', category);
 
-    //Iterate through all news sources and populate news categories with corresponding news sources
+    // Iterate through all news sources and populate news categories with corresponding news sources
     sourcesMap.forEach((key, value) => { 
 
       if (key.category === category) {
@@ -118,15 +119,15 @@ const searchArticles = (userInput) => {
   }
   else {
     getSearchResults(userInput).then( (articles) => {
-      //check if there's any articles to display
+      // Check if there's any articles to display
       if (articles.length > 0) {
-        //remove selection from all buttons
+        // Remove selection from all buttons
         $('.sourceButton').removeClass('jqfocus');
         renderNews(articles);
         addSocialNetworksFunctionality(articles);
       }  
       else {
-        //Print error message if search hasn't returned any results
+        // Render error message if search hasn't returned any results
         main.innerHTML = `<p class='error'>Your search hasn't returned any results. 
           Please try again later or check your Internet connection</p>`;
       }    
@@ -137,7 +138,7 @@ const searchArticles = (userInput) => {
 // Request search results from news API 
 const getSearchResults = async (userInput) => {
   try {
-    //Clean the page and put spinner element
+    // Clean the page and put spinner element
     main.innerHTML = '<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>';
     const request = await fetch(`https://newsapi.org/v2/everything?sortBy=publishedAt&q=${userInput}${apiKey}&pageSize=50`);
     if (request.ok) {
@@ -154,7 +155,8 @@ const getSearchResults = async (userInput) => {
 // Request News Function
 const getNews = async (url) => {
     try {
-        const response = await fetch(newsApiURL + url + apiKey + "&pageSize=90"); //Send asynchronous request to server to get news search results
+        //Send asynchronous request to server to get news search results
+        const response = await fetch(newsApiURL + url + apiKey + "&pageSize=90"); 
 
         if (response.ok) {
           const responseJson = await response.json();
@@ -178,7 +180,7 @@ function renderNews(articles) {
         ' <div class="article">' +
         '   <div><h2 class="title">' + article.title + '</h2>' +
         '   <h3>By ' + ((article.author !=null) ? article.author : "John Doe")    + ' on ' + new Date(article.publishedAt).toLocaleString() + '</h3>' +
-        '   <p class="content"> ' + ((article.content !=null) && (sourcesException.indexOf(article.source.id) === -1)
+        '   <p class="content"> ' + ((article.content != null) && (sourcesException.indexOf(article.source.id) === -1)
             ? (article.content.split("[")[0]) : article.description) + '</p>' +
         '   <a href="' + article.url + '" target="_blank noopenner norefferer" class="readmore">Read More</a></div>' +
         '   <div class="imageContainer"><img class="storyimage" src="' + article.urlToImage + '" /></div>' +
@@ -206,6 +208,7 @@ function renderNews(articles) {
 
 // Add some functionality to social network buttons
 function addSocialNetworksFunctionality(newsObjects) {
+
   let tweetButtons = document.getElementsByClassName('twitter');
   let facebookButtons = document.getElementsByClassName('facebook');
   let googleButtons = document.getElementsByClassName('google');
@@ -218,20 +221,23 @@ function addSocialNetworksFunctionality(newsObjects) {
       tweetButtons[i].classList.add("clicked");
       tweetButtons[i].disabled = true;
     }, false);
-    //Add event listeners to facebook buttons
+
+    // Add event listeners to facebook buttons
     facebookButtons[i].addEventListener('click', function() {
       facebookButtons[i].classList.add("rotate");
       facebookButtons[i].classList.add("clicked");
       facebookButtons[i].disabled = true;
     }, false);
-    //Add event listeners to google buttons
+    
+    // Add event listeners to google buttons
     googleButtons[i].addEventListener('click', function() {
       googleButtons[i].classList.add("rotate");
       googleButtons[i].classList.add("clicked");
       googleButtons[i].disabled = true;
       
     }, false);
-    //Add event listeners to linkedIn buttons
+
+    // Add event listeners to linkedIn buttons
     linkedInButtons[i].addEventListener('click', function() {
       linkedInButtons[i].classList.add("rotate");
       linkedInButtons[i].disabled = true;
@@ -239,6 +245,6 @@ function addSocialNetworksFunctionality(newsObjects) {
   }
 }
 
-//Eventlistener to add some actions when page is loaded for the first time
+// Eventlistener to add some actions when page is loaded for the first time
 window.addEventListener("load", initialize, false);
 // End of file

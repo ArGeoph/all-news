@@ -4,15 +4,16 @@
 <head>
   <meta charset="utf-8">
   <title>All news in one place</title>
-  <link rel="stylesheet" type="text/css" href="style/reset.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" />
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" type="text/css" href="style/style.css" />
   <link rel="stylesheet" type="text/css" href="style/spinner.css" />
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
  </head>
 
 <body>
   
   <h1>All news in one place</h1>
+  <!-- Header menu -->
   <div class="container">
     <form action="#" id="sources" class="nav">
       <button id="bbc" class="sourceButton" type="button">BBC</button>
@@ -30,11 +31,13 @@
     </form>    
   </div>
 
+  <!-- Main container with articles rendered -->
   <main></main>
 
+  <!-- Footer -->
   <footer>&copy; Kirill Golubev 2019</footer>
   
-  <script src="utils/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="resources/newsSources.js"></script>
   <script src="resources/apiKeys.js"></script>
   <script src="resources/main.js"></script>
