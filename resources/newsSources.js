@@ -2,7 +2,7 @@ const sourcesMap = new Map();
 let newsCategories = ['', 'World News', 'Business News', 'Technologies', 'Entertainment', 'Russian News', 'Sport'];
 
 // Add news sources exception that need special handling (in this case proper rendering of cyrillic letters)
-const sourcesException = ["rbc", "rt", "google-news-ru", "lenta"]; 
+const sourcesException = ["rbc", "rt", "google-news-ru", "lenta"];
 
 // Map used to store urls for new news sources
  sourcesMap.set("Select news", { category: '',
@@ -21,8 +21,6 @@ sourcesMap.set("National Review", { category: 'World News',
          url: "national-review"});
 sourcesMap.set("RBC", { category: "Russian News",
 url: "rbc"});
-sourcesMap.set("The Telegraph", { category: 'World News',
-   url: "the-telegraph"});
 sourcesMap.set("The Washington Post", { category: 'World News',
          url: "the-washington-post"});
 sourcesMap.set("Russia Today", { category: "Russian News",
@@ -82,8 +80,6 @@ sourcesMap.set("Polygon", { category: 'Entertainment',
 url: "polygon"});
 sourcesMap.set("Next Big Future", { category: 'Technologies',
 url: "next-big-future"});
-sourcesMap.set("Mirror", { category: 'Entertainment',
-url: "mirror"});
 sourcesMap.set("The Sport Bible", { category: 'Sport',
 url: "the-sport-bible"});
 sourcesMap.set("ESPN", { category: 'Sport',
@@ -94,8 +90,6 @@ sourcesMap.set("Associated Press", { category: 'World News',
 url: "associated-press"});
 sourcesMap.set("RTE", { category: 'World News',
 url: "rte"});
-sourcesMap.set("Metro", { category: 'Entertainment',
-url: "metro"});
 sourcesMap.set("The Times of India", { category: 'World News',
 url: "the-times-of-india"});
 sourcesMap.set("The Jerusalem Post", { category: 'World News',

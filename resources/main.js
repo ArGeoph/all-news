@@ -3,9 +3,11 @@ const bbc = document.getElementById('bbc');
 const cbc = document.getElementById('cbc');
 const cnn = document.getElementById('cnn');
 const techcrunch = document.getElementById('techcrunch');
+
 // Add new news sources related objects
 const formObject = document.getElementById("sources");
 const sourcesList = document.getElementById('newSources');
+
 // Search related DOM objects
 const userSearch = document.getElementById('search');
 const searchButton = document.getElementById('searchButton');
@@ -26,35 +28,35 @@ const initialize = () => {
   initializeNewsSources();
 
   // Add event listeners
-  bbc.addEventListener('click', (event) => { 
+  bbc.addEventListener('click', (event) => {
     // Check if user clicked news source different from the currently selected
-    if (!event.currentTarget.classList.contains('jqfocus')) { 
+    if (!event.currentTarget.classList.contains('jqfocus')) {
       $('.sourceButton').removeClass('jqfocus');
       $(event.currentTarget).addClass('jqfocus');
       addNewsSource(bbcURL);
     }
-  }, false);  
-  cbc.addEventListener('click', (event) => { 
+  }, false);
+  cbc.addEventListener('click', (event) => {
     if (!event.currentTarget.classList.contains('jqfocus')) {  // Check if user clicked news source different from the currently selected
       $('.sourceButton').removeClass('jqfocus');
       $(event.currentTarget).addClass('jqfocus');
       addNewsSource(cbcURL);
     }
-  }, false);  
-  cnn.addEventListener('click', (event) => { 
+  }, false);
+  cnn.addEventListener('click', (event) => {
     if (!event.currentTarget.classList.contains('jqfocus')) { // Check if user clicked news source different from the currently selected
       $('.sourceButton').removeClass('jqfocus');
       $(event.currentTarget).addClass('jqfocus');
       addNewsSource(cnnURL);
     }
-  }, false); 
-  techcrunch.addEventListener('click', (event) => { 
+  }, false);
+  techcrunch.addEventListener('click', (event) => {
     if (!event.currentTarget.classList.contains('jqfocus')) { // Check if user clicked news source different from the currently selected
       $('.sourceButton').removeClass('jqfocus');
       $(event.currentTarget).addClass('jqfocus');
       addNewsSource(techcrunchURL);
     }
-  }, false);   
+  }, false);
   formObject.addEventListener('submit', (event) => {
     event.preventDefault();
     searchArticles(userSearch.value);}, false);
@@ -63,12 +65,12 @@ const initialize = () => {
     addNewsSource(event.currentTarget.value);} , false);
 
   // Load default news when page is loaded by the first time, and select the corresponding menu button
-  addNewsSource(bbcURL); 
-  $('#bbc').toggleClass('jqfocus');  
+  addNewsSource(bbcURL);
+  $('#bbc').toggleClass('jqfocus');
 };
 
 // Function initializing map containing news sources and their urls, and adding them to html list
-const initializeNewsSources = () => { 
+const initializeNewsSources = () => {
 
   // Create and fill up dropdownlist with categories
   newsCategories.forEach(category => {
@@ -76,21 +78,21 @@ const initializeNewsSources = () => {
     categoryObject.setAttribute('label', category);
 
     // Iterate through all news sources and populate news categories with corresponding news sources
-    sourcesMap.forEach((key, value) => { 
+    sourcesMap.forEach((key, value) => {
 
       if (key.category === category) {
-        let newNewsSource = document.createElement("option"); 
+        let newNewsSource = document.createElement("option");
         newNewsSource.setAttribute("value", key.url);
         newNewsSource.innerHTML = value;
-       
+
         if (category === '') {
           sourcesList.appendChild(newNewsSource);
         }
         else {
           categoryObject.appendChild(newNewsSource);
         }
-      } 
-    }); 
+      }
+    });
 
     // Append category to select HTML object
     if (category !== '') {
@@ -125,17 +127,17 @@ const searchArticles = (userInput) => {
         $('.sourceButton').removeClass('jqfocus');
         renderNews(articles);
         addSocialNetworksFunctionality(articles);
-      }  
+      }
       else {
         // Render error message if search hasn't returned any results
         main.innerHTML = `<p class='error'>Your search hasn't returned any results. 
           Please try again later or check your Internet connection</p>`;
-      }    
+      }
     });
   }
 };
 
-// Request search results from news API 
+// Request search results from news API
 const getSearchResults = async (userInput) => {
   try {
     // Clean the page and put spinner element
@@ -148,7 +150,7 @@ const getSearchResults = async (userInput) => {
     }
   }
   catch(networkError) {
-    console.log(networkError);
+    throw new Error("News cannot be loaded. Please check your Internet connection or try later");
   }
 };
 
@@ -156,23 +158,22 @@ const getSearchResults = async (userInput) => {
 const getNews = async (url) => {
     try {
         //Send asynchronous request to server to get news search results
-        const response = await fetch(newsApiURL + url + apiKey + "&pageSize=90"); 
+        const response = await fetch(newsApiURL + url + apiKey + "&pageSize=90");
 
         if (response.ok) {
           const responseJson = await response.json();
 
           return responseJson.articles;
-        }                                                                                                                                                                                                                                                                     
+        }
     }
     catch(networkError) {
-       console.log(networkError);
        throw new Error("News cannot be loaded. Please check your Internet connection or try later");
-    }    
+    }
 };
 
 // Render News Function
 function renderNews(articles) {
-  main.innerHTML = ""; 
+  main.innerHTML = "";
   articles.map((article, index) => {
     if (index > 0 && article.description != null) {
         let articleRow =
@@ -183,23 +184,23 @@ function renderNews(articles) {
         '   <p class="content"> ' + ((article.content != null) && (sourcesException.indexOf(article.source.id) === -1)
             ? (article.content.split("[")[0]) : article.description) + '</p>' +
         '   <a href="' + article.url + '" target="_blank noopenner norefferer" class="readmore">Read More</a></div>' +
-        '   <div class="imageContainer"><img class="storyimage" src="' + article.urlToImage + '" /></div>' +
+        '   <div class="imageContainer"><img class="storyimage" src="' + article.urlToImage + '" alt="`${article.description}`" /></div>' +
         ' </div>' +
         ' <div class="share">' +
-        '   <div class="share-buttons"><button type="button" class="twitter fa fa-twitter" id="tweet ' + index + '">' +
+        '   <div class="share-buttons"><button type="button" class="twitter fa fa-twitter" id="tweet ' + index + '" aria-label="twitter button"">' +
         '   </button>' +
-        '   <button type="button" class="facebook fa fa-facebook " id="facebook ' + index + '">' +
+        '   <button type="button" class="facebook fa fa-facebook " id="facebook ' + index + '" aria-label="facebook button"">' +
         '   </button>' +
-        '   <button type="button" class="google fa fa-google" id="google ' + index + '">' +
-        '   </button>' + 
-        '   <button type="button" class="linkedin fa fa-linkedin" id="linkedin ' + index + '">' +
+        '   <button type="button" class="google fa fa-google" id="google ' + index + '" aria-label="google button"">' +
         '   </button>' +
-        '   <button type="button" class="comments fa fa-comments" id="comments ' + index + '">' +
+        '   <button type="button" class="linkedin fa fa-linkedin" id="linkedin ' + index + '" aria-label="google button"">' +
+        '   </button>' +
+        '   <button type="button" class="comments fa fa-comments" id="comments ' + index + '" aria-label="google button"">' +
         '   </button>' +
         ' </div>' +
         '</div>';
-  
-      main.innerHTML += articleRow;      
+
+      main.innerHTML += articleRow;
     }
   });
 
@@ -228,13 +229,13 @@ function addSocialNetworksFunctionality(newsObjects) {
       facebookButtons[i].classList.add("clicked");
       facebookButtons[i].disabled = true;
     }, false);
-    
+
     // Add event listeners to google buttons
     googleButtons[i].addEventListener('click', function() {
       googleButtons[i].classList.add("rotate");
       googleButtons[i].classList.add("clicked");
       googleButtons[i].disabled = true;
-      
+
     }, false);
 
     // Add event listeners to linkedIn buttons

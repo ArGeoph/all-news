@@ -1,7 +1,7 @@
 {
   "name": "all-news",
   "version": "1.0.0",
-  "description": "Web app aggregating news from different web sites",
+  "description": "Web app aggregating news from different news sources",
   "main": "main.js",
   "dependencies": {
     "babel-cli": "^6.26.0",
