@@ -94,5 +94,4 @@ sourcesMap.set("The Times of India", { category: 'World News',
 url: "the-times-of-india"});
 sourcesMap.set("The Jerusalem Post", { category: 'World News',
 url: "the-jerusalem-post"});
-
 // End of file

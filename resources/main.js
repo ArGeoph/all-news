@@ -11,7 +11,6 @@ const sourcesList = document.getElementById('newSources');
 // Search related DOM objects
 const userSearch = document.getElementById('search');
 const searchButton = document.getElementById('searchButton');
-
 const main = document.getElementsByTagName('main')[0];
 
 // News API Data
@@ -22,7 +21,9 @@ const cbcURL = 'cbc-news';
 const cnnURL = 'cnn';
 const techcrunchURL = 'techcrunch';
 
-// Callback function called when page is loaded for the first time
+/**
+ * Callback function called when page is loaded for the first time
+ */
 const initialize = () => {
   // Initialize news sources
   initializeNewsSources();
@@ -69,10 +70,12 @@ const initialize = () => {
   $('#bbc').toggleClass('jqfocus');
 };
 
-// Function initializing map containing news sources and their urls, and adding them to html list
+/**
+ * Initializes map containing news sources and their urls, and adding them to html list
+ */
 const initializeNewsSources = () => {
 
-  // Create and fill up dropdownlist with categories
+  // Create and fill up dropdown list with categories
   newsCategories.forEach(category => {
     let categoryObject = document.createElement('optgroup');
     categoryObject.setAttribute('label', category);
@@ -101,9 +104,12 @@ const initializeNewsSources = () => {
   });
 };
 
-// News callback function used to load and render news from the url passed as a parameter
+/**
+ * News callback function used to load and render news from the url passed as a parameter
+ * @param sourceUrl
+ */
 const addNewsSource = (sourceUrl) => {
-  if (sourceUrl != "") {
+  if (sourceUrl !== '') {
     // Add spinner html code
     main.innerHTML = '<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>';
 
@@ -114,10 +120,13 @@ const addNewsSource = (sourceUrl) => {
   }
 };
 
-// Method sending user seach request to News API
+/**
+ * Send user search request to News API
+ * @param userInput
+ */
 const searchArticles = (userInput) => {
-  if (userInput === "") {
-    return;
+  if (userInput === '') {
+    return null;
   }
   else {
     getSearchResults(userInput).then( (articles) => {
@@ -137,7 +146,11 @@ const searchArticles = (userInput) => {
   }
 };
 
-// Request search results from news API
+/**
+ * Get search results from news API
+ * @param userInput
+ * @returns {Promise<*>}
+ */
 const getSearchResults = async (userInput) => {
   try {
     // Clean the page and put spinner element
@@ -154,7 +167,11 @@ const getSearchResults = async (userInput) => {
   }
 };
 
-// Request News Function
+/**
+ * Request News Function
+ * @param url
+ * @returns {Promise<*>}
+ */
 const getNews = async (url) => {
     try {
         //Send asynchronous request to server to get news search results
@@ -171,8 +188,13 @@ const getNews = async (url) => {
     }
 };
 
-// Render News Function
-function renderNews(articles) {
+
+/**
+ * Render News Function
+ * @param articles
+ * @returns {*}
+ */
+const renderNews = (articles) => {
   main.innerHTML = "";
   articles.map((article, index) => {
     if (index > 0 && article.description != null) {
@@ -205,10 +227,13 @@ function renderNews(articles) {
   });
 
   return articles;
-}
+};
 
-// Add some functionality to social network buttons
-function addSocialNetworksFunctionality(newsObjects) {
+/**
+ * Add some functionality to social network buttons
+ * @param newsObjects
+ */
+const addSocialNetworksFunctionality = (newsObjects) => {
 
   let tweetButtons = document.getElementsByClassName('twitter');
   let facebookButtons = document.getElementsByClassName('facebook');
@@ -244,8 +269,8 @@ function addSocialNetworksFunctionality(newsObjects) {
       linkedInButtons[i].disabled = true;
     }, false);
   }
-}
+};
 
-// Eventlistener to add some actions when page is loaded for the first time
+// Event listener to add some actions when page is loaded for the first time
 window.addEventListener("load", initialize, false);
 // End of file
