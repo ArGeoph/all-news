@@ -1,4 +1,4 @@
-$(document).ready( () => {
+$(document).ready(() => {
     let navPosition = $('.container').offset().top;
 
     $(window).scroll(() => {
