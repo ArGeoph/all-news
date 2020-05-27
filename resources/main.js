@@ -14,8 +14,7 @@ const searchButton = document.getElementById('searchButton');
 const main = document.getElementsByTagName('main')[0];
 
 // News API Data
-const newsApiURL = 'https://newsapi.org/v2/top-headlines?sources=';
-const topHeadlinesURL = 'https://newsapi.org/v2/top-headlines?country=ca';
+const newsApiURL = 'http://ec2-3-16-218-57.us-east-2.compute.amazonaws.com:8080/getNews?sources=';
 const bbcURL = 'bbc-news';
 const cbcURL = 'cbc-news';
 const cnnURL = 'cnn';
@@ -37,16 +36,17 @@ const initialize = () => {
   // Add event listeners to the search field and news sources dropdown list
   formObject.addEventListener('submit', (event) => {
       event.preventDefault();
-      searchArticles(userSearch.value);
+      if (userSearch.value !== '') {
+        searchArticles(userSearch.value);
+      }
     }, false);
   sourcesList.addEventListener('change', (event) => {
       $('.sourceButton').removeClass('jqfocus');
-      addNewsSource(event.currentTarget.value);
+      addNewsSource(`${newsApiURL}${event.currentTarget.value}&pageSize=90`);
     } , false);
 
   // Load default news when page is loaded by the first time, and select the corresponding menu button
-  addNewsSource(cbcURL);
-  $('#cbc').toggleClass('jqfocus');
+  addNewsSource(`${newsApiURL}&country=ca`);
 }; // End of initialize() method
 
 /**
@@ -60,7 +60,7 @@ const addEventListenerToNewsButton = (newsButton, newsURL) => {
     if (!event.currentTarget.classList.contains('jqfocus')) {
       $('.sourceButton').removeClass('jqfocus');
       $(event.currentTarget).addClass('jqfocus');
-      addNewsSource(newsURL);
+      addNewsSource(`${newsApiURL}${newsURL}&pageSize=90`);
     }
   }, false);
 }; // End of addEventListenerToNewsButton() method
@@ -105,9 +105,10 @@ const initializeNewsSources = () => {
  */
 const addNewsSource = (sourceUrl) => {
   if (sourceUrl !== '') {
-    // Add spinner
+    // Show spinner
     main.innerHTML = '<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>';
 
+    // Fetch news
     getNews(sourceUrl)
         .then(articlesArray => renderNews(articlesArray))
         .then(articles => addSocialNetworksFunctionality(articles))
@@ -116,77 +117,6 @@ const addNewsSource = (sourceUrl) => {
     });
   }
 }; // End of addNewsSource() method
-
-/**
- * Send user search request to News API
- * @param userInput
- */
-const searchArticles = (userInput) => {
-  if (userInput === '') {
-    return null;
-  }
-  else {
-    getSearchResults(userInput).then( (articles) => {
-      // Check if there's any articles to render
-      if (articles.length > 0) {
-
-        // Remove selection from all buttons
-        $('.sourceButton').removeClass('jqfocus');
-        renderNews(articles);
-        addSocialNetworksFunctionality(articles);
-      }
-      else {
-        // Render error message if search hasn't returned any results
-        main.innerHTML = `<p class='error'>Your search hasn't returned any results. 
-          Please try again later or check your Internet connection</p>`;
-      }
-    });
-  }
-}; // End of searchArticles() method
-
-/**
- * Get search results from news API
- * @param userInput
- * @returns {Promise<*>}
- */
-const getSearchResults = async (userInput) => {
-  try {
-    // Clean the page and put spinner element
-    main.innerHTML = '<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>';
-
-    const request = await fetch(`https://newsapi.org/v2/everything?sortBy=publishedAt&q=${userInput}${apiKey}&pageSize=50`);
-    if (request.ok) {
-      const requestJson = await request.json();
-
-      return requestJson.articles;
-    }
-  }
-  catch(networkError) {
-    throw new Error("News cannot be loaded. Please check your Internet connection or try later");
-  }
-}; // End of getSearchResults() method
-
-/**
- * Request News Function
- * @param url
- * @returns {Promise<*>}
- */
-const getNews = async (url) => {
-    try {
-        //Send asynchronous request to server to get news search results
-        const response = await fetch(newsApiURL + url + apiKey + "&pageSize=90");
-
-        if (response.ok) {
-          const responseJson = await response.json();
-
-          return responseJson.articles;
-        }
-    }
-    catch(networkError) {
-       throw new Error("News cannot be loaded. Please check your Internet connection or try later");
-    }
-}; // End of getNews() method
-
 
 /**
  * Render News Function
@@ -208,7 +138,7 @@ const renderNews = (articles) => {
         '   <p class="content"> ' + ((article.content != null) && (sourcesException.indexOf(article.source.id) === -1)
             ? (article.content.split("[")[0]) : article.description) + '</p>' +
         '   <a href="' + article.url + '" target="_blank noopenner norefferer" class="readmore">Read More</a></div>' +
-        '   <div class="imageContainer"><img class="storyimage" src="' + article.urlToImage + '" alt="`${article.description}`" /></div>' +
+        '   <div class="imageContainer"><img class="storyimage" loading="lazy" src="' + article.urlToImage + '" alt="' + article.description + '" /></div>' +
         ' </div>' +
         ' <div class="share">' +
         '   <div class="share-buttons"><button type="button" class="twitter fa fa-twitter" id="tweet ' + index + '" aria-label="twitter button"">' +

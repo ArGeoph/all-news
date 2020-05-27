@@ -150,7 +150,7 @@ h1:hover {
   padding: 0;
   border-bottom: none;
 }
-#bbc:hover, #cbc:hover, #cnn:hover, #techcrunch:hover {
+#bbc:hover, #cbc:hover, #cnn:hover, #techCrunch:hover {
   border: solid 2px blue;
   box-shadow: -4px -4px 15px rgb(66, 66, 73);
   background-color: rgb(150, 65, 247);
@@ -218,7 +218,7 @@ i {
   flex-wrap: wrap;
   padding: 30px;
   justify-content: space-around;
-  min-height: 250px;  
+  min-height: 250px;
   border-bottom: solid 1px #003cff;
   overflow: visible;
 }
@@ -235,7 +235,7 @@ i {
   display: flex;
   justify-content: left;
   align-items: center;
-  min-height: 100px;  
+  min-height: 100px;
   margin-bottom: 0px;
   margin-left: 10px;
 }
@@ -363,12 +363,14 @@ footer {
   position: relative;
   font-family: "Indie Flower";
   display: flex;
+  flex: 1;
+  height: available;
   justify-content: center;
   align-items: center;
   border-top: solid 2px white;
   position: absolute;
   width: 100%;
-  height: 11.5%;
+  height: 15%;
   background-color: #16038f;
   margin: 0;
   padding: 0;
@@ -482,7 +484,7 @@ footer {
 
   p {
     font-size: 1.15em;
-  
+
   }
 
   #search {
