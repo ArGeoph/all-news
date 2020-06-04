@@ -14,7 +14,7 @@ const searchButton = document.getElementById('searchButton');
 const main = document.getElementsByTagName('main')[0];
 
 // News API Data
-const newsApiURL = 'http://ec2-3-16-218-57.us-east-2.compute.amazonaws.com:8080/getNews?sources=';
+const newsApiURL = 'http://ec2-18-188-113-120.us-east-2.compute.amazonaws.com:8080/getNews?sources=';
 const bbcURL = 'bbc-news';
 const cbcURL = 'cbc-news';
 const cnnURL = 'cnn';

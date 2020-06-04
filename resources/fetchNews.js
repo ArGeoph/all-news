@@ -30,7 +30,7 @@ const getSearchResults = async (userInput) => {
     try {
         // Clean the page and put spinner element
         main.innerHTML = '<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>';
-        const searchNewsUrl = 'http://ec2-3-16-218-57.us-east-2.compute.amazonaws.com:8080/searchNews?sortBy=publishedAt&pageSize=50&q=';
+        const searchNewsUrl = 'http://ec2-18-188-113-120.us-east-2.compute.amazonaws.com:8080/searchNews?sortBy=publishedAt&pageSize=50&q=';
 
         const request = await fetch(`${searchNewsUrl}${userInput}`);
         if (request.ok) {
