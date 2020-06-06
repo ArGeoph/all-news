@@ -1,3 +1,8 @@
+
+const newsApiBaseUrl = 'http://ec2-18-188-113-120.us-east-2.compute.amazonaws.com:8080';
+const fetchNewsApiURL = '/getNews?sources=';
+const searchNewsApiURL = '/searchNews?sortBy=publishedAt&pageSize=50&q=';
+
 /**
  * Send user search request to News API
  * @param userInput
@@ -30,9 +35,8 @@ const getSearchResults = async (userInput) => {
     try {
         // Clean the page and put spinner element
         main.innerHTML = '<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>';
-        const searchNewsUrl = 'http://ec2-18-188-113-120.us-east-2.compute.amazonaws.com:8080/searchNews?sortBy=publishedAt&pageSize=50&q=';
 
-        const request = await fetch(`${searchNewsUrl}${userInput}`);
+        const request = await fetch(`${newsApiBaseUrl}${searchNewsApiURL}${userInput}`);
         if (request.ok) {
             const requestJson = await request.json();
 
@@ -49,10 +53,10 @@ const getSearchResults = async (userInput) => {
  * @param url
  * @returns {Promise<*>}
  */
-const getNews = async (url) => {
+const getNews = async (newsSource) => {
     try {
         //Send asynchronous request to server to get news search results
-        const response = await fetch(url);
+        const response = await fetch(`${newsApiBaseUrl}${fetchNewsApiURL}${newsSource}`);
 
         if (response.ok) {
             const responseJson = await response.json();

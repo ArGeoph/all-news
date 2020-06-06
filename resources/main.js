@@ -14,7 +14,6 @@ const searchButton = document.getElementById('searchButton');
 const main = document.getElementsByTagName('main')[0];
 
 // News API Data
-const newsApiURL = 'http://ec2-18-188-113-120.us-east-2.compute.amazonaws.com:8080/getNews?sources=';
 const bbcURL = 'bbc-news';
 const cbcURL = 'cbc-news';
 const cnnURL = 'cnn';
@@ -42,11 +41,11 @@ const initialize = () => {
     }, false);
   sourcesList.addEventListener('change', (event) => {
       $('.sourceButton').removeClass('jqfocus');
-      addNewsSource(`${newsApiURL}${event.currentTarget.value}&pageSize=90`);
+      addNewsSource(`${event.currentTarget.value}&pageSize=90`);
     } , false);
 
   // Load default news when page is loaded by the first time, and select the corresponding menu button
-  addNewsSource(`${newsApiURL}&country=ca`);
+  addNewsSource(`&country=ca`);
 }; // End of initialize() method
 
 /**
@@ -54,13 +53,13 @@ const initialize = () => {
  * @param newsButton
  * @param newsURL
  */
-const addEventListenerToNewsButton = (newsButton, newsURL) => {
+const addEventListenerToNewsButton = (newsButton, newsSource) => {
   newsButton.addEventListener('click', (event) => {
     // Check if user clicked news source different from the currently selected
     if (!event.currentTarget.classList.contains('jqfocus')) {
       $('.sourceButton').removeClass('jqfocus');
       $(event.currentTarget).addClass('jqfocus');
-      addNewsSource(`${newsApiURL}${newsURL}&pageSize=90`);
+      addNewsSource(`${newsSource}&pageSize=90`);
     }
   }, false);
 }; // End of addEventListenerToNewsButton() method
