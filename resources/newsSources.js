@@ -7,6 +7,9 @@ const sourcesException = ["rbc", "rt", "google-news-ru", "lenta"];
 // Map used to store urls for new news sources
 sourcesMap.set("Select news", { category: '', url: ''});
 sourcesMap.set("AlJazeera", { category: 'World News', url: 'al-jazeera-english'});
+sourcesMap.set("New York Magazine", { category: 'World News', url: 'new-york-magazine'});
+sourcesMap.set("Reuters", { category: 'World News', url: 'reuters'});
+sourcesMap.set("Techradar", { category: 'Technologies', url: 'techradar'});
 sourcesMap.set("Google News Canada", { category: "World News", url: 'google-news-ca'});
 sourcesMap.set("Google News Russia", { category: "Russian News", url: "google-news-ru"});
 sourcesMap.set("New Scientist", { category: 'Technologies', url: "new-scientist"});
