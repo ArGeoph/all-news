@@ -48,7 +48,7 @@ h1:hover {
   border-bottom: solid 3px #0d43f7;
 }
 
-#newSources {
+#newsSources {
   margin: 19px 0 3px 0;
   display: none;
   color: black;
@@ -61,7 +61,7 @@ h1:hover {
   border: 1px solid black;
   text-align: center;
 }
-#newSources:hover {
+#newsSources:hover {
   border: solid 2px rgb(0, 0, 0);
 }
 .sourceButton {
@@ -498,7 +498,7 @@ footer {
     margin-top: 18px;
     margin-left: 10px;
   }
-  #newSources {
+  #newsSources {
     margin-top: 5px;
     margin-bottom: 5px;
     font-size: 0.9em;

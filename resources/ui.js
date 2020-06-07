@@ -24,7 +24,7 @@ $(document).ready(() => {
 
     //Add sources button actions
     $("#addMoreSources").click((event) => {
-        $("#newSources").fadeToggle(1);
+        $("#newsSources").fadeToggle(1);
 
         //Change add Sources button label
         let buttonLabel = document.getElementById("addMoreSources").innerHTML;

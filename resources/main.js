@@ -6,7 +6,7 @@ const techCrunch = document.getElementById('techCrunch');
 
 // Add new news sources related objects
 const formObject = document.getElementById('sources');
-const sourcesList = document.getElementById('newSources');
+const sourcesList = document.getElementById('newsSources');
 
 // Search related DOM objects
 const userSearch = document.getElementById('search');
@@ -41,7 +41,11 @@ const initialize = () => {
     }, false);
   sourcesList.addEventListener('change', (event) => {
       $('.sourceButton').removeClass('jqfocus');
-      addNewsSource(`${event.currentTarget.value}&pageSize=90`);
+
+      // Check if the news source selected by user isn't the placeholder item
+      if (event.currentTarget.value !== '') {
+        addNewsSource(`${event.currentTarget.value}&pageSize=90`);
+      }
     } , false);
 
   // Load default news when page is loaded by the first time, and select the corresponding menu button
@@ -68,7 +72,6 @@ const addEventListenerToNewsButton = (newsButton, newsSource) => {
  * Initializes map containing news sources and their urls, and adding them to html list
  */
 const initializeNewsSources = () => {
-
   // Create and fill up dropdown list with categories
   newsCategories.forEach(category => {
     const categoryObject = document.createElement('optgroup');
@@ -76,7 +79,6 @@ const initializeNewsSources = () => {
 
     // Iterate through all news sources and populate news categories with corresponding news sources
     sourcesMap.forEach((key, value) => {
-
       if (key.category === category) {
         let newNewsSource = document.createElement('option');
         newNewsSource.setAttribute('value', key.url);
