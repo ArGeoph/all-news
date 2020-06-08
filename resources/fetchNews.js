@@ -1,5 +1,5 @@
 
-const newsApiBaseUrl = 'http://ec2-18-188-113-120.us-east-2.compute.amazonaws.com:8080';
+const newsApiBaseUrl = 'https://my-nodejs-app-324256763.us-east-2.elb.amazonaws.com';
 const fetchNewsApiURL = '/getNews?sources=';
 const searchNewsApiURL = '/searchNews?sortBy=publishedAt&pageSize=50&q=';
 
