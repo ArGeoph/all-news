@@ -1,5 +1,6 @@
 
-const newsApiBaseUrl = 'https://my-nodejs-app-324256763.us-east-2.elb.amazonaws.com';
+// Urls used to fetch news or search results
+const newsApiBaseUrl = 'https://allnewsapp.com';
 const fetchNewsApiURL = '/getNews?sources=';
 const searchNewsApiURL = '/searchNews?sortBy=publishedAt&pageSize=50&q=';
 
@@ -8,7 +9,8 @@ const searchNewsApiURL = '/searchNews?sortBy=publishedAt&pageSize=50&q=';
  * @param userInput
  */
 const searchArticles = (userInput) => {
-    getSearchResults(userInput).then( (articles) => {
+    getSearchResults(userInput)
+        .then( (articles) => {
         // Check if there's any articles to render
         if (articles.length > 0) {
 
@@ -19,11 +21,11 @@ const searchArticles = (userInput) => {
         }
         else {
             // Render error message if search hasn't returned any results
-            main.innerHTML = `<p class='error'>Your search hasn't returned any results. 
-                Please try again later or check your Internet connection</p>`;
+            main.innerHTML = `<p class='error'>Your search hasn't returned any results. Please try again later.</p>`;
         }
+    }).catch((error) => {
+        main.innerHTML = `<p class='error'>Something went wrong. Please try again later</p>`;
     });
-
 }; // End of searchArticles() method
 
 /**
