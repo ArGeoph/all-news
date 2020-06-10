@@ -17,6 +17,7 @@ body {
 }
 
 main {
+  min-height: 41vh;
   max-width: 1300px;
   margin: 0 auto;
 }
@@ -202,10 +203,10 @@ h3 {
 
 p {
   font-size: 1.2em;
-  line-height: 2;
-  letter-spacing: 2.3px;
+  line-height: 1.5;
+  letter-spacing: 1px;
   text-align: left;
-  color: #130284;
+  color: black;
   padding: 10px;
 }
 
@@ -272,7 +273,6 @@ button {
   height: 45px;
   border-radius: 4px;
   background-color: #130284;
-  box-shadow: 0;
   border: 0px;
   font-size: 18px;
   font-weight: 600;
@@ -360,18 +360,16 @@ button {
 
 /* Footer */
 footer {
-  position: relative;
   font-family: "Indie Flower";
   display: flex;
   flex: 1;
-  height: available;
   justify-content: center;
   align-items: center;
   border-top: solid 2px white;
   position: absolute;
   width: 100%;
-  height: 15%;
-  background-color: #16038f;
+  height: 10vh;
+  background-color: #6679ac;
   margin: 0;
   padding: 0;
   color: whitesmoke;
@@ -430,7 +428,6 @@ footer {
     margin: 0 auto;
     width: 100%;
     border-radius: 0px;
-    margin-left: 0px;
   }
   .jqfocus, #bbc:focus, #cbc:focus, #cnn:focus, #techcrunch:focus {
     border-bottom: solid 1px black;
@@ -451,8 +448,7 @@ footer {
     height: 38px;
     margin-top: 17px;
     margin-left: 10px;
-    padding: 0;
-    padding-top: 4px;
+    padding: 4px 0 0 0;
   }
   #searchButton:hover {
     width: 62px;
