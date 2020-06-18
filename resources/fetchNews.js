@@ -1,6 +1,6 @@
 
 // Urls used to fetch news or search results
-const newsApiBaseUrl = 'https://bakcend.allnewsapp.com';
+const newsApiBaseUrl = 'https://backend.allnewsapp.com';
 const fetchNewsApiURL = '/getNews?sources=';
 const searchNewsApiURL = '/searchNews?sortBy=publishedAt&pageSize=50&q=';
 
