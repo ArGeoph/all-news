@@ -2,7 +2,7 @@ const sourcesMap = new Map();
 const newsCategories = ['', 'World News', 'Business News', 'Technologies', 'Entertainment', 'Russian News', 'Sport'];
 
 // Add news sources exception that need special handling (in this case proper rendering of cyrillic letters)
-const sourcesException = ['rbc', 'rt', 'google-news-ru', 'lenta'];
+const sourcesException = ['rbc', 'google-news-ru', 'lenta'];
 
 // Map used to store urls for new news sources
 sourcesMap.set('Top Headlines', { category: '', url: '&country=ca'});
@@ -16,7 +16,6 @@ sourcesMap.set('National Geographic', { category: 'Entertainment', url: 'nationa
 sourcesMap.set('National Review', { category: 'World News', url: 'national-review'});
 sourcesMap.set('RBC', { category: 'Russian News', url: 'rbc'});
 sourcesMap.set('The Washington Post', { category: 'World News', url: 'the-washington-post'});
-sourcesMap.set('Russia Today', { category: 'Russian News', url: 'rt'});
 sourcesMap.set('Wired', { category: 'Technologies', url: 'wired'});
 sourcesMap.set('The Huffington Post', { category: 'World News', url: 'the-huffington-post'});
 sourcesMap.set('BBC Sport', { category: 'Sport', url:'bbc-sport'});
@@ -50,4 +49,11 @@ sourcesMap.set('Associated Press', { category: 'World News', url: 'associated-pr
 sourcesMap.set('RTE', { category: 'World News', url: 'rte'});
 sourcesMap.set('The Times of India', { category: 'World News', url: 'the-times-of-india'});
 sourcesMap.set('The Jerusalem Post', { category: 'World News', url: 'the-jerusalem-post'});
+sourcesMap.set('MSNBC', { category: 'World News', url: 'msnbc'});
+sourcesMap.set('Bloomberg', { category: 'Business News', url: 'bloomberg'});
+sourcesMap.set('The Verge', { category: 'Technologies', url: 'the-verge'});
 // End of file
+
+
+
+
