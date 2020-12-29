@@ -15,7 +15,6 @@ sourcesMap.set('New Scientist', { category: 'Technologies', url: 'new-scientist'
 sourcesMap.set('National Geographic', { category: 'Entertainment', url: 'national-geographic'});
 sourcesMap.set('National Review', { category: 'World News', url: 'national-review'});
 sourcesMap.set('RBC', { category: 'Russian News', url: 'rbc'});
-sourcesMap.set('The Washington Post', { category: 'World News', url: 'the-washington-post'});
 sourcesMap.set('Wired', { category: 'Technologies', url: 'wired'});
 sourcesMap.set('The Huffington Post', { category: 'World News', url: 'the-huffington-post'});
 sourcesMap.set('BBC Sport', { category: 'Sport', url:'bbc-sport'});
